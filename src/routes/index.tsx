@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CourseLayout } from "@/components/course-shell";
 
 export const Route = createFileRoute("/")({
@@ -23,73 +23,170 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const goalChips = ["Agentic loop", "Steering", "MCP", "Multi-agent", "Evals", "Deployment"];
+
 function Index() {
   return (
-    <CourseLayout isHome>
+    <CourseLayout>
       <main>
-        <section id="overview" className="relative overflow-hidden border-b-4 border-ink bg-primary text-primary-foreground">
-          <div className="float-one absolute right-8 top-7 hidden size-14 place-items-center border-4 border-ink bg-gold font-display text-xl text-ink md:grid">01</div>
-          <div className="mx-auto max-w-6xl px-5 py-12">
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-gold">CSE 490 A2 · Autumn 2026</p>
-            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">
-              Vibe Coding is a hands-on course on building real applications with AI coding tools. In weekly lectures we move from natural-language intent to working product, studying the prompting, steering, and verification that gets you there. Every week ends in a project you ship — no prior AI experience needed, just a laptop.
+        {/* Hero */}
+        <section id="overview" className="border-b-2 border-ink">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="inline-block border-2 border-ink bg-gold px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm">
+              Autumn 2026 · UW CSE 490 A2 · 2 credits
             </p>
-            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">
-              The course project: build your own version of Claude Code.
+            <h1 className="mt-6 font-display text-6xl font-bold uppercase leading-[0.9] tracking-tighter sm:text-8xl">
+              Vibe
+              <br />
+              <span className="text-primary">Coding</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed">
+              Learn the latest AI-based tools for software development — by
+              building. Ten Thursdays, ten builds: from a single prompt to a
+              shipped app.
             </p>
-
-            <div className="mt-8 max-w-3xl border-4 border-ink bg-ink text-gold">
-              <div className="flex items-center justify-between border-b-4 border-gold px-4 py-2">
-                <span className="text-xs font-bold uppercase tracking-widest">This week</span>
-                <span className="text-xs font-bold uppercase tracking-widest">Week 01</span>
-              </div>
-              <div className="grid md:grid-cols-2">
-                <div className="border-b-4 border-gold px-4 py-3 md:border-b-0 md:border-r-4">
-                  <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Lecture 01 · Thu 10:00</p>
-                  <p className="mt-1 font-display text-lg leading-tight uppercase">Intro + Prompt to App</p>
-                  <a href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit" target="_blank" rel="noreferrer" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Slides →</a>
-                </div>
-                <div className="px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Project 01 · Due Tue 11:59 pm</p>
-                  <p className="mt-1 font-display text-lg leading-tight uppercase">Prompt to Web App</p>
-                  <a href="https://cse490a2.github.io/uw-cse-vibe-course/projects/P01/" target="_blank" rel="noreferrer" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Handout →</a>
-                </div>
-              </div>
-            </div>
-
+            <p className="mt-4 font-mono text-sm text-muted-foreground">
+              Thursdays 10:00–11:20 · Savery 260 · Steve Seitz
+            </p>
           </div>
         </section>
 
-        <section id="syllabus" className="border-b-4 border-ink">
-          <div className="mx-auto max-w-6xl px-5 py-12">
-            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-primary">CSE 490 A2 / Autumn 2026</p>
-            <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">Syllabus</h2>
-            <ul className="mt-8 divide-y-4 divide-ink border-4 border-ink">
-              <SyllabusRow week="Week 01" lecture="L01 · Prompt to App" project="P01 · Prompt to Web App" />
-              <SyllabusRow week="Week 02" lecture="L02 · Coding on a Budget" project="P02 · Two Models, One Bug" />
-              <SyllabusRow week="Week 03" lecture="L03 · The Agent Harness" project="P03 · Build the Harness" />
-              <SyllabusRow week="Week 04" lecture="L04 · Steering a Coding Agent" project="P04 · Write a Skill" />
-              <SyllabusRow week="Week 05" lecture="L05 · MCP and Agent Governance" project="P05 · Wire an MCP Tool" />
-              <SyllabusRow week="Week 06" lecture="L06 · Working in Code You Did Not Write" project="P06 · Review a Stranger's Code" />
-              <SyllabusRow week="Week 07" lecture="L07 · Multi-Agent Orchestration" project="P07 · Orchestrate Sub-Agents" />
-              <SyllabusRow week="Week 08" lecture="L08 · Local Models" project="P08 · Local-First Cascade" />
-              <SyllabusRow week="Week 09" lecture="L09 · Evals" project="P09 · Eval Suite (optional)" />
-              <SyllabusRow week="Week 10" lecture="L10 · Deploy Behind CI" project="P10 · Ship a Project" />
-            </ul>
+        {/* About / goal */}
+        <section className="border-b-2 border-ink">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+              About
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+              The goal: build your own Claude Code
+            </h2>
+            <div className="mt-8 border-2 border-ink bg-primary p-8 text-primary-foreground shadow-hard-lg sm:p-12">
+              <p className="max-w-3xl font-display text-2xl font-bold leading-snug sm:text-3xl">
+                By the end of the quarter, you won't just use AI coding tools —
+                you'll have built one: your own coding agent, with a harness,
+                tools, and guardrails you understand line by line.
+              </p>
+              <p className="mt-6 max-w-3xl text-sm leading-relaxed text-primary-foreground/80">
+                Each 80-minute session splits in two: a lecture and live demo of
+                the week's core technique, then roughly 40 minutes of in-class
+                building with the instructor and TAs. Week by week you assemble
+                the pieces — the agentic loop, specification and steering, MCP
+                tools and governance, multi-agent orchestration, evals — until
+                they compound into an agent that's yours.
+              </p>
+              <ul className="mt-8 flex flex-wrap gap-2">
+                {goalChips.map((chip) => (
+                  <li
+                    key={chip}
+                    className="border-2 border-primary-foreground/60 px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest"
+                  >
+                    {chip}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* This week */}
+        <section className="border-b-2 border-ink">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+              This week
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+              Week 01
+            </h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <article className="border-2 border-ink bg-card p-6 shadow-hard">
+                <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
+                  Lecture 01 · Thu 10:00
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
+                  Intro + Prompt to App
+                </h3>
+                <a
+                  href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                >
+                  Slides ↗
+                </a>
+              </article>
+              <article className="border-2 border-ink bg-card p-6 shadow-hard">
+                <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
+                  Project 01 · Due Tue 11:59 pm
+                </p>
+                <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
+                  Prompt to Web App
+                </h3>
+                <a
+                  href="https://cse490a2.github.io/uw-cse-vibe-course/projects/P01/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-block border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                >
+                  Handout ↗
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Schedule */}
+        <section id="syllabus" className="border-b-2 border-ink bg-secondary">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+              Schedule
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+              Ten Thursdays, ten builds
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              The sequence starts with the fastest possible win — a prompt
+              becomes a working app in session one — then climbs through
+              prompting method, the agentic loop, agents, and closes on evals
+              and shipping.
+            </p>
+            <div className="mt-8 border-2 border-ink bg-card shadow-hard-lg">
+              <div className="grid grid-cols-[4rem_1fr] gap-4 border-b-2 border-ink bg-ink px-5 py-3 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground md:grid-cols-[6rem_1fr_1fr]">
+                <span>Week</span>
+                <span>Lecture</span>
+                <span className="hidden md:block">Project</span>
+              </div>
+              <ul className="divide-y-2 divide-ink">
+                <SyllabusRow week="01" lecture="Prompt to App" project="Prompt to Web App" />
+                <SyllabusRow week="02" lecture="Coding on a Budget" project="Two Models, One Bug" />
+                <SyllabusRow week="03" lecture="The Agent Harness" project="Build the Harness" />
+                <SyllabusRow week="04" lecture="Steering a Coding Agent" project="Write a Skill" />
+                <SyllabusRow week="05" lecture="MCP and Agent Governance" project="Wire an MCP Tool" />
+                <SyllabusRow week="06" lecture="Working in Code You Did Not Write" project="Review a Stranger's Code" />
+                <SyllabusRow week="07" lecture="Multi-Agent Orchestration" project="Orchestrate Sub-Agents" />
+                <SyllabusRow week="08" lecture="Local Models" project="Local-First Cascade" />
+                <SyllabusRow week="09" lecture="Evals" project="Eval Suite (optional)" />
+                <SyllabusRow week="10" lecture="Deploy Behind CI" project="Ship a Project" />
+              </ul>
+            </div>
+            <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              Full detail on the <Link to="/lectures" className="text-primary underline underline-offset-4 hover:no-underline">lectures</Link> and <Link to="/projects" className="text-primary underline underline-offset-4 hover:no-underline">projects</Link> pages.
+            </p>
           </div>
         </section>
       </main>
-
     </CourseLayout>
   );
 }
 
 function SyllabusRow({ week, lecture, project }: { week: string; lecture: string; project: string }) {
   return (
-    <li className="grid gap-2 bg-paper p-5 text-sm font-bold uppercase md:grid-cols-[8rem_1fr_1fr] md:gap-6">
-      <span className="text-primary">{week}</span>
-      <span>{lecture}</span>
-      <span>{project}</span>
+    <li className="grid grid-cols-[4rem_1fr] gap-4 px-5 py-4 md:grid-cols-[6rem_1fr_1fr]">
+      <span className="font-mono text-sm font-bold text-primary">L{week}</span>
+      <span>
+        <span className="block font-bold">{lecture}</span>
+        <span className="mt-0.5 block text-sm text-muted-foreground md:hidden">{project}</span>
+      </span>
+      <span className="hidden text-sm text-muted-foreground md:block">{project}</span>
     </li>
   );
 }
