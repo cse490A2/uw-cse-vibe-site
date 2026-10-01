@@ -52,7 +52,6 @@ function Index() {
           <div className="text-left text-sm font-bold uppercase leading-6 sm:text-right">
             <p className="text-primary">CSE 490 A2 · 2 credits</p>
             <p>Thu 10:00–11:20 · Savery 260</p>
-            <p>75 mostly senior CS students</p>
           </div>
         </div>
         <nav aria-label="Course navigation" className="border-t-4 border-ink">
