@@ -28,36 +28,38 @@ function Index() {
   return (
     <CourseLayout isHome>
       <main>
-        <section id="lecture" className="relative overflow-hidden border-b-4 border-ink bg-primary text-primary-foreground">
+        <section id="overview" className="relative overflow-hidden border-b-4 border-ink bg-primary text-primary-foreground">
           <div className="float-one absolute right-8 top-7 hidden size-14 place-items-center border-4 border-ink bg-gold font-display text-xl text-ink md:grid">01</div>
-          <div className="float-two absolute bottom-10 right-28 hidden size-12 place-items-center border-4 border-gold bg-ink font-display text-base text-gold md:grid">&gt;_</div>
-          <div className="mx-auto max-w-6xl px-5 py-16">
-            <p className="mb-5 text-sm font-bold uppercase tracking-widest text-gold">Current lecture · Week 01</p>
-            <h2 className="font-display text-5xl leading-[0.9] uppercase text-gold md:text-6xl">INTRO<br />+ PROMPT TO APP</h2>
-            <p className="mt-6 max-w-xl text-sm font-bold leading-relaxed">Today we introduce the class and build your first end-to-end app. We’ll move from natural-language intent to a working product—and examine the steering and verification around the code.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase text-ink transition-colors hover:bg-paper">Open readings →</a>
-              <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="border-4 border-gold bg-ink px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-primary">Lecture materials →</a>
-              <Link to="/lectures" className="border-4 border-gold px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-gold hover:text-ink">All lectures →</Link>
-            </div>
-          </div>
-        </section>
+          <div className="mx-auto max-w-6xl px-5 py-12">
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-gold">CSE 490 A2 · Autumn 2026</p>
+            <h2 className="font-display text-3xl leading-none uppercase md:text-4xl">Build software by describing it.</h2>
+            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">
+              Vibe Coding is a hands-on course on building real applications with AI coding tools. In weekly lectures we move from natural-language intent to working product, studying the prompting, steering, and verification that gets you there. Every week ends in a project you ship — no prior AI experience needed, just a laptop.
+            </p>
 
-        <section id="project" className="border-b-4 border-ink">
-          <div className="mx-auto max-w-6xl px-5 py-14">
-            <p className="mb-6 text-xs font-bold uppercase tracking-widest text-primary">[ now_building ]</p>
-            <div className="border-4 border-ink">
-              <div className="flex flex-wrap items-center justify-between gap-3 bg-ink px-4 py-3 text-gold">
-                <span className="text-sm font-bold uppercase">$ start project_01</span>
-                <span className="text-xs font-bold uppercase tracking-widest">Due Tuesday · 11:59 pm</span>
+            <div className="mt-8 max-w-3xl border-4 border-ink bg-ink text-gold">
+              <div className="flex items-center justify-between border-b-4 border-gold px-4 py-2">
+                <span className="text-xs font-bold uppercase tracking-widest">This week</span>
+                <span className="text-xs font-bold uppercase tracking-widest">Week 01</span>
               </div>
-              <div className="grid items-end gap-7 p-6 md:grid-cols-[1fr_auto] md:p-8">
-                <div>
-                  <h2 className="font-display text-4xl leading-[0.9] uppercase md:text-5xl">Project 01<br /><span className="text-primary">Prompt to Web App</span></h2>
-                  <p className="mt-5 max-w-xl text-sm font-bold leading-relaxed">You have 40 minutes. Make a cool mobile web app with Lovable or UW Purple, iterate until it works, annotate one change, then submit the app and your prompts.</p>
+              <div className="grid md:grid-cols-2">
+                <div className="border-b-4 border-gold px-4 py-3 md:border-b-0 md:border-r-4">
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Lecture 01 · Thu 10:00</p>
+                  <p className="mt-1 font-display text-lg leading-tight uppercase">Intro + Prompt to App</p>
+                  <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Materials →</a>
                 </div>
-                <Link to="/projects" className="border-4 border-ink bg-primary px-6 py-4 text-center text-sm font-bold uppercase text-primary-foreground transition-colors hover:bg-ink">All projects →</Link>
+                <div className="px-4 py-3">
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Project 01 · Due Tue 11:59 pm</p>
+                  <p className="mt-1 font-display text-lg leading-tight uppercase">Prompt to Web App</p>
+                  <Link to="/projects" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Handout →</Link>
+                </div>
               </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/lectures" className="border-4 border-gold px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-gold hover:text-ink">All lectures →</Link>
+              <Link to="/projects" className="border-4 border-gold px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-gold hover:text-ink">All projects →</Link>
+              <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase text-ink transition-colors hover:bg-paper">Open Canvas →</a>
             </div>
           </div>
         </section>
