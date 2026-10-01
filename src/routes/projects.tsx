@@ -26,7 +26,7 @@ function Projects() {
             <span className="font-display text-5xl text-primary">P01</span>
             <div><h2 className="font-display text-3xl uppercase leading-tight md:text-4xl">Prompt to Web App</h2>
               <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">Make a mobile web app with Lovable or UW Purple, iterate until it works, annotate one change, then submit the app and your prompts.</p>
-              <a href="https://docs.google.com/document/d/1oVu3xm0ZjZC76yPapBNvbeihzR1_-iP2IRl2FBG35hw/edit" target="_blank" rel="noreferrer" className="mt-7 inline-block border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground">P01 handout ↗</a>
+              <a href="https://cse490a2.github.io/uw-cse-vibe-course/projects/P01/" target="_blank" rel="noreferrer" className="mt-7 inline-block border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground">P01 handout ↗</a>
             </div>
           </div>
         </article>
