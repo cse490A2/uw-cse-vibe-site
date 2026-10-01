@@ -23,7 +23,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const goalChips = ["Agentic loop", "Steering", "MCP", "Multi-agent", "Evals", "Deployment"];
 
 function Index() {
   return (
