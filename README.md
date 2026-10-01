@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# UW Vibe Coding Hub
+
+Build the webpage for the UW CSE Vibe Coding class.  Base it on the materials in this shared drive:  https://drive.google.com/drive/u/0/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH.  Show me some style/layout options, like say traditional class webpage, wacky/fun option, and brutalist style.  Use UW colors.  Make it compatible with Github pages.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/83c0f158-bd3b-4fec-b460-06379d6aa2c9).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
