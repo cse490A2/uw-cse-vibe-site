@@ -32,9 +32,11 @@ function Index() {
           <div className="float-one absolute right-8 top-7 hidden size-14 place-items-center border-4 border-ink bg-gold font-display text-xl text-ink md:grid">01</div>
           <div className="mx-auto max-w-6xl px-5 py-12">
             <p className="mb-4 text-sm font-bold uppercase tracking-widest text-gold">CSE 490 A2 · Autumn 2026</p>
-            <h2 className="font-display text-3xl leading-none uppercase md:text-4xl">Build software by describing it.</h2>
             <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">
               Vibe Coding is a hands-on course on building real applications with AI coding tools. In weekly lectures we move from natural-language intent to working product, studying the prompting, steering, and verification that gets you there. Every week ends in a project you ship — no prior AI experience needed, just a laptop.
+            </p>
+            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">
+              The course project: build your own version of Claude Code.
             </p>
 
             <div className="mt-8 max-w-3xl border-4 border-ink bg-ink text-gold">
@@ -46,7 +48,7 @@ function Index() {
                 <div className="border-b-4 border-gold px-4 py-3 md:border-b-0 md:border-r-4">
                   <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Lecture 01 · Thu 10:00</p>
                   <p className="mt-1 font-display text-lg leading-tight uppercase">Intro + Prompt to App</p>
-                  <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Materials →</a>
+                  <a href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit" target="_blank" rel="noreferrer" className="mt-2 inline-block border-b-2 border-gold text-xs font-bold uppercase transition-colors hover:bg-gold hover:text-ink">Slides →</a>
                 </div>
                 <div className="px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Project 01 · Due Tue 11:59 pm</p>

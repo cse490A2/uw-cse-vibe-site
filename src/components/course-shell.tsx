@@ -23,6 +23,8 @@ export function CourseHeader({ isHome = false }: { isHome?: boolean }) {
           <Link to="/projects" className={navClass}>Projects</Link>
           <Link to="/" hash="resources" className={navClass}>Resources</Link>
           <Link to="/" hash="team" className={navClass}>Team</Link>
+          <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className={navClass}>Canvas</a>
+          <a href="https://edstem.org/us/courses/107539/discussion" target="_blank" rel="noreferrer" className={navClass}>Ed Discussion</a>
         </div>
       </nav>
     </header>
