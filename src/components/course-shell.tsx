@@ -32,11 +32,11 @@ export function CourseHeader({ isHome = false }: { isHome?: boolean }) {
 }
 
 const tas = [
-  { name: "Vinamra Agarwal", email: "vinamra@cs.washington.edu" },
+  { name: "Vinamra Agarwal", email: "vinamra1@cs.washington.edu" },
   { name: "Ella Cao", email: "ellacao@cs.washington.edu" },
-  { name: "Prabhgun Basi", email: "pbasi@cs.washington.edu" },
-  { name: "Arian Shamaei", email: "arians@cs.washington.edu" },
-  { name: "Aditya Kumar", email: "adityak@cs.washington.edu" },
+  { name: "Prabhgun Basi", email: "basip@cs.washington.edu" },
+  { name: "Arian Shamaei", email: "ashama@uw.edu" },
+  { name: "Aditya Kumar", email: "adikum26@cs.washington.edu" },
 ];
 
 export function CourseFooter() {

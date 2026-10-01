@@ -65,9 +65,17 @@ function Index() {
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-primary">CSE 490 A2 / Autumn 2026</p>
             <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">Syllabus</h2>
             <ul className="mt-8 divide-y-4 divide-ink border-4 border-ink">
-              <SyllabusRow week="Week 01" lecture="L01 · Intro + Prompt to App" project="P01 · Prompt to Web App" />
+              <SyllabusRow week="Week 01" lecture="L01 · Prompt to App" project="P01 · Prompt to Web App" />
+              <SyllabusRow week="Week 02" lecture="L02 · Coding on a Budget" project="P02 · Two Models, One Bug" />
+              <SyllabusRow week="Week 03" lecture="L03 · The Agent Harness" project="P03 · Build the Harness" />
+              <SyllabusRow week="Week 04" lecture="L04 · Steering a Coding Agent" project="P04 · Write a Skill" />
+              <SyllabusRow week="Week 05" lecture="L05 · MCP and Agent Governance" project="P05 · Wire an MCP Tool" />
+              <SyllabusRow week="Week 06" lecture="L06 · Working in Code You Did Not Write" project="P06 · Review a Stranger's Code" />
+              <SyllabusRow week="Week 07" lecture="L07 · Multi-Agent Orchestration" project="P07 · Orchestrate Sub-Agents" />
+              <SyllabusRow week="Week 08" lecture="L08 · Local Models" project="P08 · Local-First Cascade" />
+              <SyllabusRow week="Week 09" lecture="L09 · Evals" project="P09 · Eval Suite (optional)" />
+              <SyllabusRow week="Week 10" lecture="L10 · Deploy Behind CI" project="P10 · Ship a Project" />
             </ul>
-            <p className="mt-6 text-sm font-bold uppercase">More weeks announced as the quarter unfolds.</p>
           </div>
         </section>
       </main>
