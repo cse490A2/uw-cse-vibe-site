@@ -37,7 +37,7 @@ function Index() {
             <h1 className="mt-6 font-display text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
               Vibe <span className="text-primary">Coding</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed">
+            <p className="mt-6 text-lg font-medium leading-relaxed">
               Learn the latest AI-based tools for software development — by
               building. Ten Thursdays, ten builds: from a single prompt to a
               shipped app. The goal: build your own Claude Code — a coding
