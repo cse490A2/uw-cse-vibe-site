@@ -47,22 +47,22 @@ export function CourseFooter() {
           The team
         </h2>
         <div className="mt-8 border-2 border-ink bg-card shadow-hard">
-          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-ink px-5 py-3">
+          <div className="border-b-2 border-ink px-5 py-3">
             <span className="font-bold">Steve Seitz — Professor</span>
             <a
               href="mailto:seitz@cs.washington.edu"
-              className="font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
+              className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
             >
               seitz@cs.washington.edu
             </a>
           </div>
           <ul className="divide-y-2 divide-ink">
             {tas.map((ta) => (
-              <li key={ta.email} className="flex flex-wrap items-baseline justify-between gap-2 px-5 py-3">
-                <span className="font-bold">{ta.name}</span>
+              <li key={ta.email} className="px-5 py-3">
+                <span className="font-bold">{ta.name} — TA</span>
                 <a
                   href={`mailto:${ta.email}`}
-                  className="font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
+                  className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
                 >
                   {ta.email}
                 </a>
