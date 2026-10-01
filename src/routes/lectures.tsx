@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CourseLayout } from "@/components/course-shell";
 
 export const Route = createFileRoute("/lectures")({
@@ -14,22 +14,52 @@ export const Route = createFileRoute("/lectures")({
 });
 
 function Lectures() {
-  return <CourseLayout>
-    <main className="min-h-[55vh]">
-      <div className="border-b-4 border-ink bg-primary py-12 text-primary-foreground md:py-16">
-        <div className="mx-auto max-w-6xl px-5"><p className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">CSE 490 A2 / Course material</p><h1 className="font-display text-5xl uppercase leading-none text-gold sm:text-7xl">Lectures</h1></div>
-      </div>
-      <div className="mx-auto max-w-6xl px-5 py-12">
-        <article className="grid gap-6 border-4 border-ink p-6 md:grid-cols-[8rem_1fr] md:p-8">
-          <span className="font-display text-5xl text-primary">L01</span>
-          <div><h2 className="font-display text-3xl uppercase leading-tight md:text-4xl">Intro + Prompt to App</h2>
-            <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">Introduce the class, build your first end-to-end app, and examine how to steer and verify AI-assisted code.</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground">L01 slides ↗</a>
+  return (
+    <CourseLayout>
+      <main className="min-h-[55vh]">
+        <div className="mx-auto max-w-4xl px-6 py-16">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary">
+            <Link to="/" className="hover:underline">Vibe Coding</Link>
+            <span className="text-muted-foreground">/</span>
+            <span className="text-foreground">Lectures</span>
+          </nav>
+          <p className="mt-6 inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+            Course material
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-bold uppercase tracking-tighter sm:text-5xl">
+            Lectures
+          </h1>
+
+          <article className="mt-10 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
+            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L01</span>
+              <div>
+                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
+                  Intro + Prompt to App
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Introduce the class, build your first end-to-end app, and
+                  examine how to steer and verify AI-assisted code.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    L01 slides ↗
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
-    </main>
-  </CourseLayout>;
+          </article>
+
+          <p className="mt-10 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+            More lectures posted weekly, after each Thursday session.
+          </p>
+        </div>
+      </main>
+    </CourseLayout>
+  );
 }
