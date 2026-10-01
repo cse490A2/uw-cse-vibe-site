@@ -3,13 +3,13 @@ import type { ReactNode } from "react";
 
 const navClass = "border-r-4 border-ink px-4 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none";
 
-export function CourseHeader() {
+export function CourseHeader({ isHome = false }: { isHome?: boolean }) {
   return (
     <header className="border-b-4 border-ink">
       <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-5 py-7">
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary">University of Washington · Paul G. Allen School</p>
-          <Link to="/" aria-label="Vibe Coding home" className="block font-display text-6xl leading-[0.85] uppercase sm:text-7xl">Vibe<br />Coding</Link>
+          {isHome ? <h1 className="font-display text-6xl leading-[0.85] uppercase sm:text-7xl">Vibe<br />Coding</h1> : <Link to="/" aria-label="Vibe Coding home" className="block font-display text-6xl leading-[0.85] uppercase sm:text-7xl">Vibe<br />Coding</Link>}
         </div>
         <div className="text-left text-sm font-bold uppercase leading-6 sm:text-right">
           <p className="text-primary">CSE 490 A2 · 2 credits</p>
@@ -56,6 +56,6 @@ export function CourseFooter() {
   );
 }
 
-export function CourseLayout({ children }: { children: ReactNode }) {
-  return <div className="min-h-screen bg-paper font-mono text-ink selection:bg-primary selection:text-primary-foreground"><CourseHeader />{children}<CourseFooter /></div>;
+export function CourseLayout({ children, isHome = false }: { children: ReactNode; isHome?: boolean }) {
+  return <div className="min-h-screen bg-paper font-mono text-ink selection:bg-primary selection:text-primary-foreground"><CourseHeader isHome={isHome} />{children}<CourseFooter /></div>;
 }
