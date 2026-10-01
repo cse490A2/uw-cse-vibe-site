@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import { CourseLayout } from "@/components/course-shell";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,54 +25,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const ticker =
-    "CSE 490 A2 · Vibe Coding · Thu 10:00–11:20 · Savery 260 · S. Seitz · Canvas · Ed · Project 01 live · ";
-
   return (
-    <div className="min-h-screen bg-paper font-mono text-ink selection:bg-primary selection:text-primary-foreground">
-      <div className="overflow-hidden border-b-4 border-ink bg-gold py-2 text-sm font-bold uppercase">
-        <div className="ticker flex w-max">
-          <span className="shrink-0">{ticker}</span>
-          <span className="shrink-0" aria-hidden="true">
-            {ticker}
-          </span>
-        </div>
-      </div>
-
-      <header id="overview" className="border-b-4 border-ink">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-5 py-7">
-          <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary">
-              University of Washington · Paul G. Allen School
-            </p>
-            <h1 className="font-display text-6xl leading-[0.85] uppercase sm:text-7xl">
-              Vibe
-              <br />
-              Coding
-            </h1>
-          </div>
-          <div className="text-left text-sm font-bold uppercase leading-6 sm:text-right">
-            <p className="text-primary">CSE 490 A2 · 2 credits</p>
-            <p>Thu 10:00–11:20 · Savery 260</p>
-          </div>
-        </div>
-        <nav aria-label="Course navigation" className="border-t-4 border-ink">
-          <div className="mx-auto flex max-w-6xl flex-wrap px-5">
-            {[
-              ["Overview", "#overview"],
-              ["Lecture 01", "#lecture"],
-              ["Project 01", "#project"],
-              ["Resources", "#resources"],
-              ["Team", "#team"],
-            ].map(([label, href]) => (
-              <a key={label} href={href} className="border-r-4 border-ink px-4 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none">
-                {label}
-              </a>
-            ))}
-          </div>
-        </nav>
-      </header>
-
+    <CourseLayout isHome>
       <main>
         <section id="lecture" className="relative overflow-hidden border-b-4 border-ink bg-primary text-primary-foreground">
           <div className="float-one absolute right-8 top-7 hidden size-14 place-items-center border-4 border-ink bg-gold font-display text-xl text-ink md:grid">01</div>
@@ -82,6 +38,7 @@ function Index() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase text-ink transition-colors hover:bg-paper">Open readings →</a>
               <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="border-4 border-gold bg-ink px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-primary">Lecture materials →</a>
+              <Link to="/lectures" className="border-4 border-gold px-5 py-3 text-sm font-bold uppercase text-gold transition-colors hover:bg-gold hover:text-ink">All lectures →</Link>
             </div>
           </div>
         </section>
@@ -99,7 +56,7 @@ function Index() {
                   <h2 className="font-display text-4xl leading-[0.9] uppercase md:text-5xl">Project 01<br /><span className="text-primary">Prompt to Web App</span></h2>
                   <p className="mt-5 max-w-xl text-sm font-bold leading-relaxed">You have 40 minutes. Make a cool mobile web app with Lovable or UW Purple, iterate until it works, annotate one change, then submit the app and your prompts.</p>
                 </div>
-                <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="border-4 border-ink bg-primary px-6 py-4 text-center text-sm font-bold uppercase text-primary-foreground transition-colors hover:bg-ink">Read handout →</a>
+                <Link to="/projects" className="border-4 border-ink bg-primary px-6 py-4 text-center text-sm font-bold uppercase text-primary-foreground transition-colors hover:bg-ink">All projects →</Link>
               </div>
             </div>
           </div>
@@ -114,29 +71,7 @@ function Index() {
         </section>
       </main>
 
-      <footer id="team" className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl gap-9 px-5 py-12 md:grid-cols-2">
-          <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">Instructional team</p>
-            <ul className="space-y-1 text-sm font-bold">
-              <li>Steve Seitz — Professor · seitz@cs.washington.edu</li>
-              <li>Vinamra Agarwal · Ella Cao</li>
-              <li>Prabhgun Basi · Arian Shamaei · Aditya Kumar</li>
-            </ul>
-          </div>
-          <div className="md:text-right">
-            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">Next class</p>
-            <p className="font-display text-3xl leading-none uppercase">Thursday 10:00<br />Savery 260</p>
-            <p className="mt-4 text-sm font-bold">Bring a laptop. We’re building.</p>
-          </div>
-        </div>
-        <div className="border-t-4 border-gold">
-          <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-5 py-4 text-xs font-bold uppercase tracking-widest">
-            <span>University of Washington · CSE 490 A2</span><span>Built for the web · Ready for GitHub Pages</span>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </CourseLayout>
   );
 }
 
