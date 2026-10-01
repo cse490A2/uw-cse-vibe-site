@@ -7,7 +7,7 @@ const navLink =
 export function CourseHeader() {
   return (
     <header className="border-b-2 border-ink bg-paper">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-end gap-4 px-6 py-3">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-start gap-4 px-6 py-3">
         <nav aria-label="Course navigation" className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <Link to="/" className={navLink}>About</Link>
           <Link to="/" hash="syllabus" className={navLink}>Schedule</Link>
