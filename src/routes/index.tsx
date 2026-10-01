@@ -35,10 +35,8 @@ function Index() {
             <p className="inline-block border-2 border-ink bg-gold px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm">
               Autumn 2026 · UW CSE 490 A2 · 2 credits
             </p>
-            <h1 className="mt-6 font-display text-6xl font-bold uppercase leading-[0.9] tracking-tighter sm:text-8xl">
-              Vibe
-              <br />
-              <span className="text-primary">Coding</span>
+            <h1 className="mt-6 font-display text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
+              Vibe <span className="text-primary">Coding</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed">
               Learn the latest AI-based tools for software development — by
@@ -48,23 +46,12 @@ function Index() {
             <p className="mt-4 font-mono text-sm text-muted-foreground">
               Thursdays 10:00–11:20 · Savery 260 · Steve Seitz
             </p>
-          </div>
-        </section>
-
-        {/* About / goal */}
-        <section className="border-b-2 border-ink">
-          <div className="mx-auto max-w-6xl px-6 py-16">
-            <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
-              About
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
-              The goal: build your own Claude Code
-            </h2>
-            <div className="mt-8 border-2 border-ink bg-primary p-8 text-primary-foreground shadow-hard-lg sm:p-12">
+            <div className="mt-10 border-2 border-ink bg-primary p-8 text-primary-foreground shadow-hard-lg sm:p-12">
               <p className="max-w-3xl font-display text-2xl font-bold leading-snug sm:text-3xl">
-                By the end of the quarter, you won't just use AI coding tools —
-                you'll have built one: your own coding agent, with a harness,
-                tools, and guardrails you understand line by line.
+                The goal: build your own Claude Code. By the end of the
+                quarter, you won't just use AI coding tools — you'll have built
+                one: your own coding agent, with a harness, tools, and
+                guardrails you understand line by line.
               </p>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-primary-foreground/80">
                 Each 80-minute session splits in two: a lecture and live demo of

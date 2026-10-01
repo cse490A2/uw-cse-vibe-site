@@ -7,15 +7,7 @@ const navLink =
 export function CourseHeader() {
   return (
     <header className="border-b-2 border-ink bg-paper">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="grid size-8 place-items-center border-2 border-ink bg-primary font-mono text-xs font-bold text-primary-foreground shadow-hard-sm">
-            &gt;_
-          </span>
-          <span className="font-mono text-sm font-bold lowercase tracking-tight">
-            vibe-coding <span className="text-muted-foreground">cse 490 a2</span>
-          </span>
-        </Link>
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-end gap-4 px-6 py-3">
         <nav aria-label="Course navigation" className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <Link to="/" className={navLink}>About</Link>
           <Link to="/" hash="syllabus" className={navLink}>Schedule</Link>
@@ -55,8 +47,8 @@ export function CourseFooter() {
           The team
         </h2>
         <div className="mt-8 border-2 border-ink bg-card shadow-hard">
-          <div className="border-b-2 border-ink px-5 py-4">
-            <p className="font-bold">Steve Seitz — Professor</p>
+          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-ink px-5 py-3">
+            <span className="font-bold">Steve Seitz — Professor</span>
             <a
               href="mailto:seitz@cs.washington.edu"
               className="font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
