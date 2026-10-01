@@ -42,7 +42,7 @@ function Projects() {
                   Prompt to Web App
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  Make a mobile web app with Lovable or UW Purple, iterate until
+                  Make a web app with Lovable or UW Purple, iterate until
                   it works, annotate one change, then submit the app and your
                   prompts.
                 </p>
