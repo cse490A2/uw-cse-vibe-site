@@ -40,10 +40,8 @@ function Index() {
             <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed">
               Learn the latest AI-based tools for software development — by
               building. Ten Thursdays, ten builds: from a single prompt to a
-              shipped app. The goal: build your own Claude Code. By the end of
-              the quarter, you won't just use AI coding tools — you'll have
-              built one: your own coding agent, with a harness, tools, and
-              guardrails you understand line by line.
+              shipped app. The goal: build your own Claude Code — a coding
+              agent with a harness, tools, and guardrails you understand.
             </p>
             <p className="mt-4 font-mono text-sm text-muted-foreground">
               Thursdays 10:00–11:20 · Savery 260 · Steve Seitz
