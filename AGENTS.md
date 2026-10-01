@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the site as a static-export-compatible TanStack Start app with environment-driven base paths, because it must deploy correctly to GitHub Pages subpaths.
+- Keep course navigation and chrome in a shared course layout, because the overview, lectures, and projects pages must stay consistent.

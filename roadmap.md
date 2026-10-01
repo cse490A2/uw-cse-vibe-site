@@ -1,0 +1,3 @@
+- [x] Remove the sliding course banner.
+- [x] Add Lectures and Projects pages with L01 and P01 links.
+- [x] Update the home page navigation and course sections to point to those pages.
