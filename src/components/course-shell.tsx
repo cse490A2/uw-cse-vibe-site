@@ -50,40 +50,45 @@ const tas = [
 ];
 
 export function CourseFooter() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onHome = pathname === "/";
+
   return (
     <footer id="team" className="border-t-2 border-ink bg-paper">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
-          Staff
-        </p>
-        <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
-          The team
-        </h2>
-        <div className="mt-8 border-2 border-ink bg-card shadow-hard">
-          <div className="border-b-2 border-ink px-5 py-3">
-            <span className="font-bold">Steve Seitz — Professor</span>
-            <a
-              href="mailto:seitz@cs.washington.edu"
-              className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
-            >
-              seitz@cs.washington.edu
-            </a>
+      {onHome && (
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+            Staff
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+            The team
+          </h2>
+          <div className="mt-8 border-2 border-ink bg-card shadow-hard">
+            <div className="border-b-2 border-ink px-5 py-3">
+              <span className="font-bold">Steve Seitz — Professor</span>
+              <a
+                href="mailto:seitz@cs.washington.edu"
+                className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
+              >
+                seitz@cs.washington.edu
+              </a>
+            </div>
+            <ul className="divide-y-2 divide-ink">
+              {tas.map((ta) => (
+                <li key={ta.email} className="px-5 py-3">
+                  <span className="font-bold">{ta.name} — TA</span>
+                  <a
+                    href={`mailto:${ta.email}`}
+                    className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
+                  >
+                    {ta.email}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="divide-y-2 divide-ink">
-            {tas.map((ta) => (
-              <li key={ta.email} className="px-5 py-3">
-                <span className="font-bold">{ta.name} — TA</span>
-                <a
-                  href={`mailto:${ta.email}`}
-                  className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
-                >
-                  {ta.email}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
-      </div>
+      )}
       <div className="border-t-2 border-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-6 py-4 font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
           <span>University of Washington · CSE 490 A2</span>
