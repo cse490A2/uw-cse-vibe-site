@@ -55,9 +55,6 @@ function Index() {
             <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
               This week
             </p>
-            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
-              Week 01
-            </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
