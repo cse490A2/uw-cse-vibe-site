@@ -25,8 +25,7 @@ function Lectures() {
           <div><h2 className="font-display text-3xl uppercase leading-tight md:text-4xl">Intro + Prompt to App</h2>
             <p className="mt-4 max-w-2xl text-sm font-bold leading-relaxed">Introduce the class, build your first end-to-end app, and examine how to steer and verify AI-assisted code.</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href="https://drive.google.com/drive/folders/17AsDt0xtHcmSvpeLSEoSSTRtdhB2xzbH" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground">L01 materials ↗</a>
-              <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className="border-4 border-ink px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-ink hover:text-gold">Readings ↗</a>
+              <a href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground">L01 slides ↗</a>
             </div>
           </div>
         </article>
