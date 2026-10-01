@@ -77,7 +77,7 @@ function Index() {
           <div className="float-two absolute bottom-10 right-28 hidden size-12 place-items-center border-4 border-gold bg-ink font-display text-base text-gold md:grid">&gt;_</div>
           <div className="mx-auto max-w-6xl px-5 py-16">
             <p className="mb-5 text-sm font-bold uppercase tracking-widest text-gold">Current lecture · Week 01</p>
-            <h2 className="font-display text-5xl leading-[0.9] uppercase text-gold md:text-6xl">01 — Intro<br />+ Prompt to App</h2>
+            <h2 className="font-display text-5xl leading-[0.9] uppercase text-gold md:text-6xl">INTRO<br />+ PROMPT TO APP</h2>
             <p className="mt-6 max-w-xl text-sm font-bold leading-relaxed">Today we introduce the class and build your first end-to-end app. We’ll move from natural-language intent to a working product—and examine the steering and verification around the code.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className="border-4 border-ink bg-gold px-5 py-3 text-sm font-bold uppercase text-ink transition-colors hover:bg-paper">Open readings →</a>
