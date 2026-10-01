@@ -41,37 +41,14 @@ function Index() {
             <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed">
               Learn the latest AI-based tools for software development — by
               building. Ten Thursdays, ten builds: from a single prompt to a
-              shipped app.
+              shipped app. The goal: build your own Claude Code. By the end of
+              the quarter, you won't just use AI coding tools — you'll have
+              built one: your own coding agent, with a harness, tools, and
+              guardrails you understand line by line.
             </p>
             <p className="mt-4 font-mono text-sm text-muted-foreground">
               Thursdays 10:00–11:20 · Savery 260 · Steve Seitz
             </p>
-            <div className="mt-10 border-2 border-ink bg-primary p-8 text-primary-foreground shadow-hard-lg sm:p-12">
-              <p className="max-w-3xl font-display text-2xl font-bold leading-snug sm:text-3xl">
-                The goal: build your own Claude Code. By the end of the
-                quarter, you won't just use AI coding tools — you'll have built
-                one: your own coding agent, with a harness, tools, and
-                guardrails you understand line by line.
-              </p>
-              <p className="mt-6 max-w-3xl text-sm leading-relaxed text-primary-foreground/80">
-                Each 80-minute session splits in two: a lecture and live demo of
-                the week's core technique, then roughly 40 minutes of in-class
-                building with the instructor and TAs. Week by week you assemble
-                the pieces — the agentic loop, specification and steering, MCP
-                tools and governance, multi-agent orchestration, evals — until
-                they compound into an agent that's yours.
-              </p>
-              <ul className="mt-8 flex flex-wrap gap-2">
-                {goalChips.map((chip) => (
-                  <li
-                    key={chip}
-                    className="border-2 border-primary-foreground/60 px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest"
-                  >
-                    {chip}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </section>
 
