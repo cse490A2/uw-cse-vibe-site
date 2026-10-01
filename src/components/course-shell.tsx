@@ -1,19 +1,32 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 const navLink =
   "font-mono text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:text-primary";
 
+const navLinkActive =
+  "font-mono text-xs font-bold uppercase tracking-widest text-primary underline underline-offset-4";
+
 export function CourseHeader() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hash = useRouterState({ select: (s) => s.location.hash });
+
+  const onHome = pathname === "/";
+  const isAbout = onHome && !hash;
+  const isSchedule = onHome && hash === "syllabus";
+  const isStaff = onHome && hash === "team";
+  const isLectures = pathname === "/lectures";
+  const isProjects = pathname === "/projects";
+
   return (
     <header className="border-b-2 border-ink bg-paper">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-start gap-4 px-6 py-3">
         <nav aria-label="Course navigation" className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <Link to="/" className={navLink}>About</Link>
-          <Link to="/" hash="syllabus" className={navLink}>Schedule</Link>
-          <Link to="/lectures" className={navLink}>Lectures</Link>
-          <Link to="/projects" className={navLink}>Projects</Link>
-          <Link to="/" hash="team" className={navLink}>Staff</Link>
+          <Link to="/" className={isAbout ? navLinkActive : navLink} aria-current={isAbout ? "page" : undefined}>About</Link>
+          <Link to="/" hash="syllabus" className={isSchedule ? navLinkActive : navLink} aria-current={isSchedule ? "page" : undefined}>Schedule</Link>
+          <Link to="/lectures" className={isLectures ? navLinkActive : navLink} aria-current={isLectures ? "page" : undefined}>Lectures</Link>
+          <Link to="/projects" className={isProjects ? navLinkActive : navLink} aria-current={isProjects ? "page" : undefined}>Projects</Link>
+          <Link to="/" hash="team" className={isStaff ? navLinkActive : navLink} aria-current={isStaff ? "page" : undefined}>Staff</Link>
           <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className={navLink}>Canvas</a>
           <a href="https://edstem.org/us/courses/107539/discussion" target="_blank" rel="noreferrer" className={navLink}>Ed</a>
           <Link
