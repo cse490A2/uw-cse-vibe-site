@@ -30,7 +30,7 @@ function Index() {
       <main>
         {/* Hero */}
         <section id="overview" className="border-b-2 border-ink">
-          <div className="mx-auto max-w-6xl px-6 py-16">
+          <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-gold px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm">
               Autumn 2026 · UW CSE 490 A2 · 2 credits
             </p>
@@ -51,7 +51,7 @@ function Index() {
 
         {/* This week */}
         <section className="border-b-2 border-ink">
-          <div className="mx-auto max-w-6xl px-6 py-16">
+          <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
               This week
             </p>
@@ -94,7 +94,7 @@ function Index() {
 
         {/* Schedule */}
         <section id="syllabus" className="border-b-2 border-ink bg-secondary">
-          <div className="mx-auto max-w-6xl px-6 py-16">
+          <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
               Schedule
             </p>
