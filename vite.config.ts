@@ -5,6 +5,7 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { HIDDEN_PROJECTS } from "./src/lib/published";
 
 const basePath = process.env["VITE_BASE_PATH"] || "/";
 const isStaticExport = process.env["VITE_STATIC_EXPORT"] === "1";
@@ -21,6 +22,7 @@ export default defineConfig({
     pages: [
       { path: "/" }, { path: "/lectures" }, { path: "/projects" },
       ...Array.from({ length: 10 }, (_, i) => `P${String(i + 1).padStart(2, "0")}`)
+        .filter((id) => !HIDDEN_PROJECTS.has(id))
         .flatMap((id) => [
           { path: `/projects/${id}` },
           { path: `/projects/${id}/setup` },

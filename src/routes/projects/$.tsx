@@ -26,6 +26,9 @@ function parseSplat(splat: string | undefined): { id: string; page: ProjectPage 
 }
 
 export const Route = createFileRoute("/projects/$")({
+  beforeLoad: ({ params }) => {
+    parseSplat(params._splat);
+  },
   head: ({ params }) => {
     const [id] = (params._splat ?? "").split("/");
     return { meta: [{ title: `${id || "Project"} — Vibe Coding, CSE 490 A2` }] };

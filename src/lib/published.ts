@@ -30,8 +30,12 @@ export interface PublishedProject {
   starterZip: boolean;
 }
 
+// Published but not yet released to students: left off the list, and
+// their pages show as not found. Remove an id here to release it.
+export const HIDDEN_PROJECTS = new Set(["P03"]);
+
 export function isProjectId(s: string | undefined): s is string {
-  return !!s && /^P\d{2}$/.test(s);
+  return !!s && /^P\d{2}$/.test(s) && !HIDDEN_PROJECTS.has(s);
 }
 
 export async function fetchText(path: string): Promise<string> {
@@ -61,7 +65,7 @@ export async function listProjects(): Promise<PublishedProject[]> {
     byId.set(id, p);
   }
   return [...byId.values()]
-    .filter((p) => p.pages.includes("handout"))
+    .filter((p) => p.pages.includes("handout") && !HIDDEN_PROJECTS.has(p.id))
     .map((p) => ({
       ...p,
       pages: (["handout", "setup", "submission"] as ProjectPage[]).filter((x) =>
