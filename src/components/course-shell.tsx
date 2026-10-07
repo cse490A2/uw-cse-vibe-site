@@ -16,7 +16,7 @@ export function CourseHeader() {
   const isSchedule = onHome && hash === "syllabus";
   const isStaff = onHome && hash === "team";
   const isLectures = pathname === "/lectures";
-  const isProjects = pathname === "/projects";
+  const isProjects = pathname.startsWith("/projects");
 
   return (
     <header className="border-b-2 border-ink bg-paper">

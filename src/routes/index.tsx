@@ -79,14 +79,13 @@ function Index() {
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
                   Prompt to Web App
                 </h3>
-                <a
-                  href="https://cse490a2.github.io/uw-cse-vibe-course/projects/P01/"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/projects/$"
+                  params={{ _splat: "P01" }}
                   className="mt-4 inline-block border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
                 >
-                  Handout ↗
-                </a>
+                  Handout
+                </Link>
               </article>
             </div>
           </div>

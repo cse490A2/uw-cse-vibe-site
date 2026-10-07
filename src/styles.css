@@ -61,6 +61,9 @@
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-code: var(--code);
+  --color-on-dark: var(--on-dark);
   --shadow-hard-sm: 3px 3px 0 0 var(--ink);
   --shadow-hard: 6px 6px 0 0 var(--ink);
   --shadow-hard-lg: 10px 10px 0 0 var(--ink);
@@ -73,6 +76,9 @@
   --paper: oklch(0.965 0.008 90);
   --ink: oklch(0.18 0.02 300);
   --gold: oklch(0.72 0.09 90);
+  --gold-foreground: oklch(0.25 0.03 85);
+  --code: oklch(0.21 0.03 305);
+  --on-dark: oklch(0.95 0.012 305);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
