@@ -55,6 +55,31 @@ function Lectures() {
             </div>
           </article>
 
+          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
+            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L02</span>
+              <div>
+                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
+                  Coding on a Budget
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Model choice as a hiring decision: capability, task fit, and
+                  total cost. The prompt-run-refine loop, practiced by hand.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://docs.google.com/presentation/d/1usDNjQSZBv8fafI1AeJde9AlNLP2PyJFD3fqTxpFNHw/edit?slide=id.L02Bi6ac073da#slide=id.L02Bi6ac073da"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    L02 slides ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <p className="mt-10 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             More lectures posted weekly, after each Thursday session.
           </p>
