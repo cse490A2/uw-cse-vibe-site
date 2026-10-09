@@ -4,6 +4,7 @@ import { ChevronRight } from "lucide-react";
 
 import { listProjects } from "@/lib/published";
 import { CourseLayout } from "@/components/course-shell";
+import { LatePolicy } from "@/components/late-policy";
 
 export const Route = createFileRoute("/projects/")({
   head: () => ({
@@ -90,6 +91,8 @@ function ProjectsIndex() {
               ))}
             </ul>
           )}
+
+          <LatePolicy className="mt-12" />
         </div>
       </main>
     </CourseLayout>

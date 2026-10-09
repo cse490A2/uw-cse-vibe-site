@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CourseLayout } from "@/components/course-shell";
+import { LatePolicy } from "@/components/late-policy";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -129,6 +130,11 @@ function Index() {
               Full detail on the <Link to="/lectures" className="text-primary underline underline-offset-4 hover:no-underline">lectures</Link> and <Link to="/projects" className="text-primary underline underline-offset-4 hover:no-underline">projects</Link> pages.
             </p>
           </div>
+        </section>
+
+        {/* Late policy */}
+        <section id="late-policy" className="border-b-2 border-ink">
+          <LatePolicy className="mx-auto max-w-6xl px-6 py-8" />
         </section>
       </main>
     </CourseLayout>
