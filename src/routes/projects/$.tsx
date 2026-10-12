@@ -15,6 +15,7 @@ import {
   type ProjectPage,
 } from "@/lib/published";
 import { CourseLayout } from "@/components/course-shell";
+import { PROXY_PROJECTS, VpnNotice } from "@/components/vpn-notice";
 
 // /projects/P02, /projects/P02/setup, /projects/P02/submission
 // One route for every project: the splat is "<id>" or "<id>/<page>".
@@ -115,6 +116,8 @@ function ProjectView() {
               </a>
             )}
           </div>
+
+          {PROXY_PROJECTS.has(id) && <VpnNotice className="mt-8" />}
 
           <article className="mt-8">
             {doc.isPending && (
