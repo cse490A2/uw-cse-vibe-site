@@ -63,6 +63,18 @@ export function CourseFooter() {
           <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
             The team
           </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Post questions about the course and projects on{" "}
+            <a
+              href="https://edstem.org/us/courses/107539/discussion"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-primary underline underline-offset-4 hover:no-underline"
+            >
+              Ed
+            </a>
+            . Use the list below to contact the staff directly.
+          </p>
           <div className="mt-8 border-2 border-ink bg-card shadow-hard">
             <div className="border-b-2 border-ink px-5 py-3">
               <span className="font-bold">Steve Seitz — Professor</span>
