@@ -80,6 +80,31 @@ function Lectures() {
             </div>
           </article>
 
+          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
+            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L03</span>
+              <div>
+                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
+                  The Agent Harness
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  What turns a model into a coding agent: the loop, the tools,
+                  and the guardrails that make up the harness around it.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://docs.google.com/presentation/d/1SwzQMo008p_o_5amilzLFUvQEMMNdbczaV3C7F1Cud4/edit?slide=id.F03s00#slide=id.F03s00"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    L03 slides ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <p className="mt-10 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             More lectures posted weekly, after each Thursday session.
           </p>
