@@ -32,7 +32,7 @@ export interface PublishedProject {
 
 // Published but not yet released to students: left off the list, and
 // their pages show as not found. Remove an id here to release it.
-export const HIDDEN_PROJECTS = new Set(["P04"]);
+export const HIDDEN_PROJECTS = new Set<string>();
 
 export function isProjectId(s: string | undefined): s is string {
   return !!s && /^P\d{2}$/.test(s) && !HIDDEN_PROJECTS.has(s);
