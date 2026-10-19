@@ -6,7 +6,6 @@ import { ProjectMarkdown } from "@/components/ProjectMarkdown";
 import {
   PAGE_FILE,
   PUBLISHED_RAW,
-  PUBLISHED_REPO,
   fetchText,
   isProjectId,
   listProjects,
@@ -141,19 +140,6 @@ function ProjectView() {
             )}
             {doc.data && <ProjectMarkdown id={id} markdown={stripFrontMatter(doc.data)} />}
           </article>
-
-          <p className="mt-16 border-t-2 border-ink pt-4 text-sm text-muted-foreground">
-            Rendered from{" "}
-            <a
-              href={`${PUBLISHED_REPO}/blob/main/projects/${id}/${PAGE_FILE[page]}`}
-              className="font-semibold text-primary underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              projects/{id}/{PAGE_FILE[page]}
-            </a>{" "}
-            in the course repository. An edit there shows here within a few minutes.
-          </p>
         </div>
       </main>
     </CourseLayout>
