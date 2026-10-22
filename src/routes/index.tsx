@@ -59,13 +59,13 @@ function Index() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                  Lecture 03 · Thu 10:00
+                  Lecture 04 · Thu 10:00
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
-                  The Agent Harness
+                  Agent Steering
                 </h3>
                 <a
-                  href="https://docs.google.com/presentation/d/1SwzQMo008p_o_5amilzLFUvQEMMNdbczaV3C7F1Cud4/edit?slide=id.F03s00#slide=id.F03s00"
+                  href="https://docs.google.com/presentation/d/10m1KLxa6v8ksdo6l2_YypGBx2rQTE4RAxClRPm74OFs/edit"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"

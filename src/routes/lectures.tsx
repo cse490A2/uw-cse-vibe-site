@@ -105,6 +105,31 @@ function Lectures() {
             </div>
           </article>
 
+          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
+            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L04</span>
+              <div>
+                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
+                  Agent Steering
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  How to steer a coding agent: specs and checks it can run, plan
+                  mode, interrupting and rewinding, AGENTS.md, and skills.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://docs.google.com/presentation/d/10m1KLxa6v8ksdo6l2_YypGBx2rQTE4RAxClRPm74OFs/edit"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    L04 slides ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
           <p className="mt-10 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             More lectures posted weekly, after each Thursday session.
           </p>
