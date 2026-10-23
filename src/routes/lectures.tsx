@@ -118,7 +118,7 @@ function Lectures() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="https://docs.google.com/presentation/d/1bw5AsUpz1_nkiNKFTQ_084Di85p_wb1F/edit?slide=id.p1#slide=id.p1"
+                    href="https://docs.google.com/presentation/d/1q5D2FhbnWFfdcClw-giTbza4x0KNwpHFhFg1qgPWM-Y/edit?slide=id.F04s00#slide=id.F04s00"
                     target="_blank"
                     rel="noreferrer"
                     className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
