@@ -43,7 +43,7 @@ function Lectures() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="https://docs.google.com/presentation/d/1JZoVNiDwyTnzxVSkouKSFZrMMMMPnqpKgVpodDX83_k/edit"
+                    href="https://docs.google.com/presentation/d/16ZMX6pdsYZ4Lg6H6id4uk08q6Jz5oo-FVB5WdPdLT7M/edit"
                     target="_blank"
                     rel="noreferrer"
                     className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
@@ -68,7 +68,7 @@ function Lectures() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="https://docs.google.com/presentation/d/107gXiT-o4_wCjIlhGA53AbuNMDAV0_4nd-ll1Bn6fPM/edit?slide=id.L02Bs00#slide=id.L02Bs00"
+                    href="https://docs.google.com/presentation/d/1iqTGRGrUnFfsmgqyFlBxS3rGX_II0UFEgVDaK0CHSVs/edit?slide=id.L02Bs00#slide=id.L02Bs00"
                     target="_blank"
                     rel="noreferrer"
                     className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
@@ -93,7 +93,7 @@ function Lectures() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
-                    href="https://docs.google.com/presentation/d/1SwzQMo008p_o_5amilzLFUvQEMMNdbczaV3C7F1Cud4/edit?slide=id.F03s00#slide=id.F03s00"
+                    href="https://docs.google.com/presentation/d/1R2ktSuYlbWvSdiywPtwbfkMC26c0Ryu2lmHPlaTiYf0/edit?slide=id.F03s00#slide=id.F03s00"
                     target="_blank"
                     rel="noreferrer"
                     className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
