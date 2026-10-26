@@ -1,6 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CourseLayout } from "@/components/course-shell";
 import { LatePolicy } from "@/components/late-policy";
+import { lecture } from "@/lib/lectures";
+import { listProjects } from "@/lib/published";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,8 +27,32 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// Titles match the slides and handouts once they are posted; later weeks
+// are the planned topics.
+const SCHEDULE = [
+  { week: "01", lecture: "Intro + Prompt to App", project: "Prompt to Web App" },
+  { week: "02", lecture: "Coding on a Budget", project: "Insert Prompt to Play" },
+  { week: "03", lecture: "The Agent Harness", project: "The Agent Harness" },
+  { week: "04", lecture: "Agent Steering", project: "Driving a Coding Agent" },
+  { week: "05", lecture: "MCP and Agent Governance", project: "Wire an MCP Tool" },
+  { week: "06", lecture: "Working in Code You Did Not Write", project: "Review a Stranger's Code" },
+  { week: "07", lecture: "Multi-Agent Orchestration", project: "Orchestrate Sub-Agents" },
+  { week: "08", lecture: "Local Models", project: "Local-First Cascade" },
+  { week: "09", lecture: "Evals", project: "Eval Suite (optional)" },
+  { week: "10", lecture: "Deploy Behind CI", project: "Ship a Project" },
+];
 
 function Index() {
+  // Same query as the projects page: a schedule row links to its handout
+  // once that project is published.
+  const projects = useQuery({
+    queryKey: ["published", "projects"],
+    queryFn: listProjects,
+    enabled: typeof window !== "undefined",
+    staleTime: 60_000,
+  });
+  const published = new Set(projects.data?.map((p) => p.id));
+
   return (
     <CourseLayout>
       <main>
@@ -65,7 +92,7 @@ function Index() {
                   Agent Steering
                 </h3>
                 <a
-                  href="https://docs.google.com/presentation/d/1q5D2FhbnWFfdcClw-giTbza4x0KNwpHFhFg1qgPWM-Y/edit?slide=id.F04s00#slide=id.F04s00"
+                  href={lecture("L04")?.slides}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
@@ -114,16 +141,14 @@ function Index() {
                 <span className="hidden md:block">Project</span>
               </div>
               <ul className="divide-y-2 divide-ink">
-                <SyllabusRow week="01" lecture="Prompt to App" project="Prompt to Web App" />
-                <SyllabusRow week="02" lecture="Coding on a Budget" project="Two Models, One Bug" />
-                <SyllabusRow week="03" lecture="The Agent Harness" project="Build the Harness" />
-                <SyllabusRow week="04" lecture="Steering a Coding Agent" project="Write a Skill" />
-                <SyllabusRow week="05" lecture="MCP and Agent Governance" project="Wire an MCP Tool" />
-                <SyllabusRow week="06" lecture="Working in Code You Did Not Write" project="Review a Stranger's Code" />
-                <SyllabusRow week="07" lecture="Multi-Agent Orchestration" project="Orchestrate Sub-Agents" />
-                <SyllabusRow week="08" lecture="Local Models" project="Local-First Cascade" />
-                <SyllabusRow week="09" lecture="Evals" project="Eval Suite (optional)" />
-                <SyllabusRow week="10" lecture="Deploy Behind CI" project="Ship a Project" />
+                {SCHEDULE.map((row) => (
+                  <SyllabusRow
+                    key={row.week}
+                    {...row}
+                    slides={lecture(`L${row.week}`)?.slides}
+                    projectId={published.has(`P${row.week}`) ? `P${row.week}` : undefined}
+                  />
+                ))}
               </ul>
             </div>
             <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -141,15 +166,44 @@ function Index() {
   );
 }
 
-function SyllabusRow({ week, lecture, project }: { week: string; lecture: string; project: string }) {
+const rowLink = "underline decoration-2 underline-offset-4 hover:text-primary hover:no-underline";
+
+function SyllabusRow({
+  week,
+  lecture,
+  project,
+  slides,
+  projectId,
+}: {
+  week: string;
+  lecture: string;
+  project: string;
+  slides?: string | undefined;
+  projectId?: string | undefined;
+}) {
+  const projectLabel = projectId ? (
+    <Link to="/projects/$" params={{ _splat: projectId }} className={rowLink}>
+      {project}
+    </Link>
+  ) : (
+    project
+  );
   return (
     <li className="grid grid-cols-[4rem_1fr] gap-4 px-5 py-4 md:grid-cols-[6rem_1fr_1fr]">
       <span className="font-mono text-sm font-bold text-primary">L{week}</span>
       <span>
-        <span className="block font-bold">{lecture}</span>
-        <span className="mt-0.5 block text-sm text-muted-foreground md:hidden">{project}</span>
+        <span className="block font-bold">
+          {slides ? (
+            <a href={slides} target="_blank" rel="noreferrer" className={rowLink}>
+              {lecture} ↗
+            </a>
+          ) : (
+            lecture
+          )}
+        </span>
+        <span className="mt-0.5 block text-sm text-muted-foreground md:hidden">{projectLabel}</span>
       </span>
-      <span className="hidden text-sm text-muted-foreground md:block">{project}</span>
+      <span className="hidden text-sm text-muted-foreground md:block">{projectLabel}</span>
     </li>
   );
 }

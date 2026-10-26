@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CourseLayout } from "@/components/course-shell";
+import { LECTURES } from "@/lib/lectures";
 
 export const Route = createFileRoute("/lectures")({
   head: () => ({ meta: [
@@ -30,105 +31,34 @@ function Lectures() {
             Lectures
           </h1>
 
-          <article className="mt-10 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
-            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
-              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L01</span>
-              <div>
-                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
-                  Intro + Prompt to App
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  Introduce the class, build your first end-to-end app, and
-                  examine how to steer and verify AI-assisted code.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="https://docs.google.com/presentation/d/16ZMX6pdsYZ4Lg6H6id4uk08q6Jz5oo-FVB5WdPdLT7M/edit"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
-                  >
-                    L01 slides ↗
-                  </a>
+          {LECTURES.map((l, i) => (
+            <article
+              key={l.id}
+              className={`${i === 0 ? "mt-10" : "mt-6"} border-2 border-ink bg-card p-6 shadow-hard md:p-8`}
+            >
+              <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
+                <span className="font-display text-5xl font-bold tracking-tighter text-primary">{l.id}</span>
+                <div>
+                  <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
+                    {l.title}
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                    {l.summary}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href={l.slides}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                    >
+                      {l.id} slides ↗
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-
-          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
-            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
-              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L02</span>
-              <div>
-                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
-                  Coding on a Budget
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  Model choice as a hiring decision: capability, task fit, and
-                  total cost. The prompt-run-refine loop, practiced by hand.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="https://docs.google.com/presentation/d/1iqTGRGrUnFfsmgqyFlBxS3rGX_II0UFEgVDaK0CHSVs/edit?slide=id.L02Bs00#slide=id.L02Bs00"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
-                  >
-                    L02 slides ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
-            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
-              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L03</span>
-              <div>
-                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
-                  The Agent Harness
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  What turns a model into a coding agent: the loop, the tools,
-                  and the guardrails that make up the harness around it.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="https://docs.google.com/presentation/d/1R2ktSuYlbWvSdiywPtwbfkMC26c0Ryu2lmHPlaTiYf0/edit?slide=id.F03s00#slide=id.F03s00"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
-                  >
-                    L03 slides ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article className="mt-6 border-2 border-ink bg-card p-6 shadow-hard md:p-8">
-            <div className="grid gap-6 md:grid-cols-[6rem_1fr]">
-              <span className="font-display text-5xl font-bold tracking-tighter text-primary">L04</span>
-              <div>
-                <h2 className="font-display text-2xl font-bold uppercase tracking-tight md:text-3xl">
-                  Agent Steering
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  How to steer a coding agent: specs and checks it can run, plan
-                  mode, interrupting and rewinding, AGENTS.md, and skills.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="https://docs.google.com/presentation/d/1q5D2FhbnWFfdcClw-giTbza4x0KNwpHFhFg1qgPWM-Y/edit?slide=id.F04s00#slide=id.F04s00"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
-                  >
-                    L04 slides ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </article>
+            </article>
+          ))}
 
           <p className="mt-10 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             More lectures posted weekly, after each Thursday session.
