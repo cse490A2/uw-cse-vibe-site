@@ -73,9 +73,27 @@ export function CourseFooter() {
             >
               Ed
             </a>
-            . Use the list below to contact the staff directly.
+            . To reach the whole staff at once, email the TA mailing list. Use the list below to
+            contact the staff directly.
           </p>
           <div className="mt-8 border-2 border-ink bg-card shadow-hard">
+            <div className="border-b-2 border-ink bg-secondary px-5 py-3">
+              <span className="font-bold">cse490a2-ta — TA mailing list</span>
+              <a
+                href="mailto:cse490a2-ta@cs.washington.edu"
+                className="mt-1 block font-mono text-sm text-primary underline underline-offset-4 hover:no-underline"
+              >
+                cse490a2-ta@cs.washington.edu
+              </a>
+              <a
+                href="https://mailman.cs.washington.edu/mailman/listinfo/cse490a2-ta"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 inline-block font-mono text-xs uppercase tracking-widest text-muted-foreground underline underline-offset-4 hover:no-underline"
+              >
+                List info ↗
+              </a>
+            </div>
             <div className="border-b-2 border-ink px-5 py-3">
               <span className="font-bold">Steve Seitz — Professor</span>
               <a
