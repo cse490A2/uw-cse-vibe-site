@@ -34,7 +34,7 @@ const SCHEDULE = [
   { week: "02", lecture: "Coding on a Budget", project: "Insert Prompt to Play" },
   { week: "03", lecture: "The Agent Harness", project: "The Agent Harness" },
   { week: "04", lecture: "Agent Steering", project: "Driving a Coding Agent" },
-  { week: "05", lecture: "MCP and Agent Governance", project: "Building an Animation with MCP" },
+  { week: "05", lecture: "MCP and Security", project: "Building an Animation with MCP" },
   { week: "06", lecture: "Working in Code You Did Not Write", project: "Review a Stranger's Code" },
   { week: "07", lecture: "Multi-Agent Orchestration", project: "Orchestrate Sub-Agents" },
   { week: "08", lecture: "Local Models", project: "Local-First Cascade" },
@@ -86,13 +86,13 @@ function Index() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                  Lecture 04 · Thu 10:00
+                  Lecture 05 · Thu 10:00
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
-                  Agent Steering
+                  MCP and Security
                 </h3>
                 <a
-                  href={lecture("L04")?.slides}
+                  href={lecture("L05")?.slides}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"

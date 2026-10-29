@@ -41,6 +41,14 @@ export const LECTURES: Lecture[] = [
     slides:
       "https://docs.google.com/presentation/d/1q5D2FhbnWFfdcClw-giTbza4x0KNwpHFhFg1qgPWM-Y/edit?slide=id.F04s00#slide=id.F04s00",
   },
+  {
+    id: "L05",
+    title: "MCP and Security",
+    summary:
+      "How MCP turns any app, from Blender to a robot, into a tool your agent can call, and how to keep it safe: permissions, hooks, the lethal trifecta, and sandboxes.",
+    slides:
+      "https://docs.google.com/presentation/d/1reJnpabQDyxkcu91-zWb1pDlSFMQ5shTBj_5BiKy2F0/edit?slide=id.F07s01#slide=id.F07s01",
+  },
 ];
 
 export function lecture(id: string): Lecture | undefined {
