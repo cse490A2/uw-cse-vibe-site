@@ -1,27 +1,78 @@
 import { Link } from "@tanstack/react-router";
+import { isValidElement, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { makeIdAllocator } from "@/lib/platform";
 import { imageSrc, resolveLink } from "@/lib/published";
 
 // A project document, rendered in this site's own type and colors. The
 // Markdown comes from the published repository; every style below is a
 // site token, so a theme change here restyles the handouts with it.
 
+/** The words inside a heading, for its id. */
+function textOf(node: ReactNode): string {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) return textOf(node.props.children);
+  return "";
+}
+
 export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string }) {
+  // Headings carry ids so the page's "On this page" list can jump to them.
+  // The allocator numbers repeats in document order; it is rebuilt on every
+  // render, and the Markdown renders in one pass, so the ids stay stable.
+  const nextId = makeIdAllocator();
+  const anchor = (children: ReactNode) => nextId(textOf(children).trim());
   const components: Components = {
     h1: ({ children }) => (
-      <h1 className="mt-10 text-3xl font-bold uppercase tracking-tighter first:mt-0 sm:text-4xl">
+      <h1
+        id={anchor(children)}
+        className="mt-10 scroll-mt-24 text-3xl font-bold uppercase tracking-tighter first:mt-0 sm:text-4xl"
+      >
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-10 border-b-4 border-ink pb-2 text-2xl font-bold uppercase tracking-tight">
+      <h2
+        id={anchor(children)}
+        className="mt-10 scroll-mt-24 border-b-4 border-ink pb-2 text-2xl font-bold uppercase tracking-tight"
+      >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-8 text-lg font-bold uppercase tracking-tight">{children}</h3>
+      <h3
+        id={anchor(children)}
+        className="mt-8 scroll-mt-24 text-lg font-bold uppercase tracking-tight"
+      >
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4
+        id={anchor(children)}
+        className="mt-6 scroll-mt-24 text-base font-bold uppercase tracking-tight"
+      >
+        {children}
+      </h4>
+    ),
+    h5: ({ children }) => (
+      <h5
+        id={anchor(children)}
+        className="mt-4 scroll-mt-24 text-sm font-bold uppercase tracking-widest"
+      >
+        {children}
+      </h5>
+    ),
+    h6: ({ children }) => (
+      <h6
+        id={anchor(children)}
+        className="mt-4 scroll-mt-24 font-mono text-xs font-bold uppercase tracking-widest"
+      >
+        {children}
+      </h6>
     ),
     p: ({ children }) => <p className="mt-4 leading-relaxed">{children}</p>,
     ul: ({ children }) => <ul className="mt-4 list-disc space-y-1.5 pl-6">{children}</ul>,

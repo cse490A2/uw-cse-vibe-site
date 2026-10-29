@@ -1,8 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { Download } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
+import { PageGuide } from "@/components/PageGuide";
 import { ProjectMarkdown } from "@/components/ProjectMarkdown";
+import {
+  detectPlatform,
+  forPlatform,
+  headings,
+  loadPlatform,
+  savePlatform,
+  splitPlatforms,
+  type Platform,
+} from "@/lib/platform";
 import {
   PAGE_FILE,
   PUBLISHED_RAW,
@@ -68,6 +79,26 @@ function ProjectView() {
   const meta = projects.data?.find((p) => p.id === id);
   const title = handout.data ? projectTitle(handout.data, id) : id;
 
+  // One computer's view of a document that repeats its steps per computer,
+  // and the headings of that view. The choice is remembered across pages.
+  const split = useMemo(() => splitPlatforms(stripFrontMatter(doc.data ?? "")), [doc.data]);
+  const [chosen, setChosen] = useState<Platform | undefined>(undefined);
+  useEffect(() => {
+    setChosen(loadPlatform() ?? detectPlatform());
+  }, []);
+  const platform: Platform =
+    chosen && split.platforms.includes(chosen) ? chosen : (split.platforms[0] ?? chosen ?? "mac");
+  const choosePlatform = (p: Platform) => {
+    setChosen(p);
+    savePlatform(p);
+  };
+  const shown = useMemo(
+    () =>
+      split.platforms.length ? forPlatform(split, platform) : stripFrontMatter(doc.data ?? ""),
+    [split, platform, doc.data],
+  );
+  const toc = useMemo(() => headings(shown), [shown]);
+
   return (
     <CourseLayout>
       <main className="min-h-screen bg-background text-foreground">
@@ -118,6 +149,15 @@ function ProjectView() {
 
           {PROXY_PROJECTS.has(id) && <VpnNotice className="mt-8" />}
 
+          {doc.data && (
+            <PageGuide
+              platforms={split.platforms}
+              platform={platform}
+              onPlatform={choosePlatform}
+              items={toc}
+            />
+          )}
+
           <article className="mt-8">
             {doc.isPending && (
               <p className="font-mono text-sm text-muted-foreground">
@@ -138,7 +178,7 @@ function ProjectView() {
                 </button>
               </div>
             )}
-            {doc.data && <ProjectMarkdown id={id} markdown={stripFrontMatter(doc.data)} />}
+            {doc.data && <ProjectMarkdown id={id} markdown={shown} />}
           </article>
         </div>
       </main>
