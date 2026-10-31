@@ -3,9 +3,12 @@
 export function LatePolicy({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+      <h2
+        id="late-policy-heading"
+        className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm"
+      >
         Late policy
-      </p>
+      </h2>
       <div className="mt-8 border-2 border-ink bg-card p-6 shadow-hard md:max-w-xl">
         <p className="font-display text-4xl font-bold tracking-tighter text-primary">
           −25% / day

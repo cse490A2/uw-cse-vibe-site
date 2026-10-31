@@ -3,6 +3,7 @@ import { isValidElement, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { NewTab } from "@/components/course-shell";
 import { makeIdAllocator } from "@/lib/platform";
 import { imageSrc, resolveLink } from "@/lib/published";
 
@@ -29,6 +30,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h1: ({ children }) => (
       <h1
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-10 scroll-mt-24 text-3xl font-bold uppercase tracking-tighter first:mt-0 sm:text-4xl"
       >
         {children}
@@ -37,6 +39,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h2: ({ children }) => (
       <h2
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-10 scroll-mt-24 border-b-4 border-ink pb-2 text-2xl font-bold uppercase tracking-tight"
       >
         {children}
@@ -45,6 +48,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h3: ({ children }) => (
       <h3
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-8 scroll-mt-24 text-lg font-bold uppercase tracking-tight"
       >
         {children}
@@ -53,6 +57,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h4: ({ children }) => (
       <h4
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-6 scroll-mt-24 text-base font-bold uppercase tracking-tight"
       >
         {children}
@@ -61,6 +66,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h5: ({ children }) => (
       <h5
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-4 scroll-mt-24 text-sm font-bold uppercase tracking-widest"
       >
         {children}
@@ -69,6 +75,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     h6: ({ children }) => (
       <h6
         id={anchor(children)}
+        tabIndex={-1}
         className="mt-4 scroll-mt-24 font-mono text-xs font-bold uppercase tracking-widest"
       >
         {children}
@@ -98,6 +105,7 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
           {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
         >
           {children}
+          {external && <NewTab arrow={false} />}
         </a>
       );
     },
@@ -118,7 +126,10 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
         </code>
       ),
     pre: ({ children }) => (
-      <pre className="mt-4 overflow-x-auto border-2 border-ink bg-code p-4 font-mono text-sm text-on-dark shadow-hard-sm">
+      <pre
+        tabIndex={0}
+        className="mt-4 overflow-x-auto border-2 border-ink bg-code p-4 font-mono text-sm text-on-dark shadow-hard-sm"
+      >
         {children}
       </pre>
     ),
@@ -129,7 +140,12 @@ export function ProjectMarkdown({ id, markdown }: { id: string; markdown: string
     ),
     hr: () => <hr className="my-10 border-t-4 border-ink" />,
     table: ({ children }) => (
-      <div className="mt-6 overflow-x-auto border-2 border-ink shadow-hard-sm">
+      <div
+        role="region"
+        aria-label="Table"
+        tabIndex={0}
+        className="mt-6 overflow-x-auto border-2 border-ink shadow-hard-sm"
+      >
         <table className="w-full text-sm">{children}</table>
       </div>
     ),

@@ -18,8 +18,15 @@ export function PlatformPicker({
 }) {
   const shown = PLATFORMS.filter((p) => platforms.includes(p));
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <span className="mr-1 font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
+    <div
+      role="group"
+      aria-labelledby="platform-label"
+      className="flex flex-wrap items-center gap-2"
+    >
+      <span
+        id="platform-label"
+        className="mr-1 font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground"
+      >
         Your computer
       </span>
       {shown.map((p) => (
@@ -53,6 +60,8 @@ export function OnThisPage({ items }: { items: Heading[] }) {
     if (!el) return;
     e.preventDefault();
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Keyboard and screen-reader users continue from the heading they jumped to.
+    el.focus({ preventScroll: true });
     window.history.replaceState(null, "", `#${id}`);
   };
   return (

@@ -1,3 +1,5 @@
+import { NewTab } from "@/components/course-shell";
+
 // The UW LLM proxy only answers from the UW network, so off-campus work
 // needs the UW VPN. Shown above every page of the projects that use it.
 export const PROXY_PROJECTS = new Set(["P02", "P03"]);
@@ -17,6 +19,7 @@ export function VpnNotice({ className = "" }: { className?: string }) {
         Connect to the{" "}
         <a href={VPN_ARTICLE} className="font-semibold underline" target="_blank" rel="noreferrer">
           UW VPN
+          <NewTab arrow={false} />
         </a>{" "}
         and try again.
       </p>

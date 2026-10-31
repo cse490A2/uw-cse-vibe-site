@@ -29,13 +29,17 @@ function ProjectsIndex() {
 
   return (
     <CourseLayout>
-      <main className="min-h-screen bg-background text-foreground">
+      <main
+        id="main"
+        tabIndex={-1}
+        className="focus:outline-none min-h-screen bg-background text-foreground"
+      >
         <div className="mx-auto max-w-6xl px-6 py-16">
           <Link
             to="/"
             className="font-mono text-xs font-bold uppercase tracking-widest text-primary hover:underline"
           >
-            ← Vibe Coding
+            <span aria-hidden="true">← </span>Vibe Coding
           </Link>
           <p className="mt-6 inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
             projects
@@ -49,12 +53,12 @@ function ProjectsIndex() {
           </p>
 
           {q.isPending && (
-            <p className="mt-10 font-mono text-sm text-muted-foreground">
+            <p role="status" className="mt-10 font-mono text-sm text-muted-foreground">
               Loading the project list…
             </p>
           )}
           {q.isError && (
-            <div className="mt-10 border-2 border-ink bg-secondary p-4 shadow-hard-sm">
+            <div role="alert" className="mt-10 border-2 border-ink bg-secondary p-4 shadow-hard-sm">
               <p className="font-medium">The project list did not load.</p>
               <button
                 onClick={() => q.refetch()}

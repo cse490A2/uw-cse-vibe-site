@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CourseLayout } from "@/components/course-shell";
+import { CourseLayout, NewTab } from "@/components/course-shell";
 import { LatePolicy } from "@/components/late-policy";
 import { lecture } from "@/lib/lectures";
 import { listProjects } from "@/lib/published";
@@ -55,14 +55,14 @@ function Index() {
 
   return (
     <CourseLayout>
-      <main>
+      <main id="main" tabIndex={-1} className="focus:outline-none">
         {/* Hero */}
-        <section id="overview" className="border-b-2 border-ink">
+        <section id="overview" aria-labelledby="overview-heading" className="border-b-2 border-ink">
           <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-gold px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm">
               Autumn 2026 · UW CSE 490 A2 · 2 credits
             </p>
-            <h1 className="mt-6 font-display text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
+            <h1 id="overview-heading" className="mt-6 font-display text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
               Vibe <span className="text-primary">Coding</span>
             </h1>
             <p className="mt-6 text-lg font-medium leading-relaxed">
@@ -78,11 +78,14 @@ function Index() {
         </section>
 
         {/* This week */}
-        <section className="border-b-2 border-ink">
+        <section aria-labelledby="this-week-heading" className="border-b-2 border-ink">
           <div className="mx-auto max-w-6xl px-6 py-8">
-            <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
+            <h2
+              id="this-week-heading"
+              className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm"
+            >
               This week
-            </p>
+            </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
@@ -97,7 +100,8 @@ function Index() {
                   rel="noreferrer"
                   className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
                 >
-                  Slides ↗
+                  Slides
+                  <NewTab />
                 </a>
               </article>
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
@@ -120,12 +124,12 @@ function Index() {
         </section>
 
         {/* Schedule */}
-        <section id="syllabus" className="border-b-2 border-ink bg-secondary">
+        <section id="syllabus" aria-labelledby="syllabus-heading" className="border-b-2 border-ink bg-secondary">
           <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
               Schedule
             </p>
-            <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+            <h2 id="syllabus-heading" className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
               Ten Thursdays, ten builds
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
@@ -135,12 +139,13 @@ function Index() {
               and shipping.
             </p>
             <div className="mt-8 border-2 border-ink bg-card shadow-hard-lg">
-              <div className="grid grid-cols-[4rem_1fr] gap-4 border-b-2 border-ink bg-ink px-5 py-3 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground md:grid-cols-[6rem_1fr_1fr]">
+              {/* column labels for the eye; each row names its own parts for screen readers */}
+              <div aria-hidden="true" className="grid grid-cols-[4rem_1fr] gap-4 border-b-2 border-ink bg-ink px-5 py-3 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground md:grid-cols-[6rem_1fr_1fr]">
                 <span>Week</span>
                 <span>Lecture</span>
                 <span className="hidden md:block">Project</span>
               </div>
-              <ul className="divide-y-2 divide-ink">
+              <ul aria-label="Weekly schedule" className="divide-y-2 divide-ink">
                 {SCHEDULE.map((row) => (
                   <SyllabusRow
                     key={row.week}
@@ -158,7 +163,7 @@ function Index() {
         </section>
 
         {/* Late policy */}
-        <section id="late-policy" className="border-b-2 border-ink">
+        <section id="late-policy" aria-labelledby="late-policy-heading" className="border-b-2 border-ink">
           <LatePolicy className="mx-auto max-w-6xl px-6 py-8" />
         </section>
       </main>
@@ -190,20 +195,29 @@ function SyllabusRow({
   );
   return (
     <li className="grid grid-cols-[4rem_1fr] gap-4 px-5 py-4 md:grid-cols-[6rem_1fr_1fr]">
-      <span className="font-mono text-sm font-bold text-primary">L{week}</span>
+      <span className="font-mono text-sm font-bold text-primary">
+        <span className="sr-only">Week </span>L{week}
+      </span>
       <span>
         <span className="block font-bold">
           {slides ? (
             <a href={slides} target="_blank" rel="noreferrer" className={rowLink}>
-              {lecture} ↗
+              {lecture}
+              <NewTab />
             </a>
           ) : (
             lecture
           )}
         </span>
-        <span className="mt-0.5 block text-sm text-muted-foreground md:hidden">{projectLabel}</span>
+        <span className="mt-0.5 block text-sm text-muted-foreground md:hidden">
+          <span className="sr-only">Project: </span>
+          {projectLabel}
+        </span>
       </span>
-      <span className="hidden text-sm text-muted-foreground md:block">{projectLabel}</span>
+      <span className="hidden text-sm text-muted-foreground md:block">
+        <span className="sr-only">Project: </span>
+        {projectLabel}
+      </span>
     </li>
   );
 }

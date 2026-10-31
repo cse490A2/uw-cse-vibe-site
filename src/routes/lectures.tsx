@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CourseLayout } from "@/components/course-shell";
+import { CourseLayout, NewTab } from "@/components/course-shell";
 import { LECTURES } from "@/lib/lectures";
 
 export const Route = createFileRoute("/lectures")({
@@ -17,12 +17,12 @@ export const Route = createFileRoute("/lectures")({
 function Lectures() {
   return (
     <CourseLayout>
-      <main className="min-h-[55vh]">
+      <main id="main" tabIndex={-1} className="focus:outline-none min-h-[55vh]">
         <div className="mx-auto max-w-4xl px-6 py-16">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary">
             <Link to="/" className="hover:underline">Vibe Coding</Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-foreground">Lectures</span>
+            <span aria-hidden="true" className="text-muted-foreground">/</span>
+            <span aria-current="page" className="text-foreground">Lectures</span>
           </nav>
           <p className="mt-6 inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
             Course material
@@ -52,7 +52,8 @@ function Lectures() {
                       rel="noreferrer"
                       className="border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"
                     >
-                      {l.id} slides ↗
+                      {l.id} slides
+                      <NewTab />
                     </a>
                   </div>
                 </div>

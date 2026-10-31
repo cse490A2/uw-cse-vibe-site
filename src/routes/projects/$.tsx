@@ -101,18 +101,31 @@ function ProjectView() {
 
   return (
     <CourseLayout>
-      <main className="min-h-screen bg-background text-foreground">
+      <main
+        id="main"
+        tabIndex={-1}
+        className="focus:outline-none min-h-screen bg-background text-foreground"
+      >
         <div className="mx-auto max-w-4xl px-6 py-16">
-          <nav className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary"
+          >
             <Link to="/" className="hover:underline">
               Vibe Coding
             </Link>
-            <span className="text-muted-foreground">/</span>
+            <span aria-hidden="true" className="text-muted-foreground">
+              /
+            </span>
             <Link to="/projects" className="hover:underline">
               Projects
             </Link>
-            <span className="text-muted-foreground">/</span>
-            <span className="text-foreground">{id}</span>
+            <span aria-hidden="true" className="text-muted-foreground">
+              /
+            </span>
+            <span aria-current="page" className="text-foreground">
+              {id}
+            </span>
           </nav>
 
           <p className="mt-6 inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
@@ -122,13 +135,18 @@ function ProjectView() {
             {title}
           </h1>
 
-          {/* the project's pages, as tabs; only the ones that exist */}
-          <div className="mt-8 flex flex-wrap gap-2 border-b-4 border-ink pb-4">
+          {/* the project's pages, as tabs; only the ones that exist. Each is
+              its own route, so this is a nav with a current page, not a tablist */}
+          <nav
+            aria-label="Project pages"
+            className="mt-8 flex flex-wrap gap-2 border-b-4 border-ink pb-4"
+          >
             {(meta?.pages ?? ["handout"]).map((p) => (
               <Link
                 key={p}
                 to="/projects/$"
                 params={{ _splat: p === "handout" ? id : `${id}/${p}` }}
+                aria-current={p === page ? "page" : undefined}
                 className={
                   "border-2 border-ink px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm " +
                   (p === page ? "bg-primary text-primary-foreground" : "bg-card hover:bg-secondary")
@@ -145,7 +163,7 @@ function ProjectView() {
                 <Download className="h-3.5 w-3.5" /> Starter files
               </a>
             )}
-          </div>
+          </nav>
 
           {PROXY_PROJECTS.has(id) && <VpnNotice className="mt-8" />}
 
@@ -158,14 +176,14 @@ function ProjectView() {
             />
           )}
 
-          <article className="mt-8">
+          <article aria-busy={doc.isPending} className="mt-8">
             {doc.isPending && (
-              <p className="font-mono text-sm text-muted-foreground">
+              <p role="status" className="font-mono text-sm text-muted-foreground">
                 Loading {LABEL[page].toLowerCase()}…
               </p>
             )}
             {doc.isError && (
-              <div className="border-2 border-ink bg-secondary p-4 shadow-hard-sm">
+              <div role="alert" className="border-2 border-ink bg-secondary p-4 shadow-hard-sm">
                 <p className="font-medium">
                   This page did not load from the course repository.
                   <span className="block text-sm text-muted-foreground">{String(doc.error)}</span>

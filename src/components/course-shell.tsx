@@ -4,6 +4,17 @@ import type { ReactNode } from "react";
 const navLink =
   "font-mono text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:text-primary";
 
+// A link that opens in a new tab: the arrow is for the eye, the words for
+// screen readers and agents.
+export function NewTab({ arrow = true }: { arrow?: boolean }) {
+  return (
+    <>
+      {arrow && <span aria-hidden="true"> ↗</span>}
+      <span className="sr-only"> (opens in a new tab)</span>
+    </>
+  );
+}
+
 const navLinkActive =
   "font-mono text-xs font-bold uppercase tracking-widest text-primary underline underline-offset-4";
 
@@ -27,8 +38,8 @@ export function CourseHeader() {
           <Link to="/lectures" className={isLectures ? navLinkActive : navLink} aria-current={isLectures ? "page" : undefined}>Lectures</Link>
           <Link to="/projects" className={isProjects ? navLinkActive : navLink} aria-current={isProjects ? "page" : undefined}>Projects</Link>
           <Link to="/" hash="team" className={isStaff ? navLinkActive : navLink} aria-current={isStaff ? "page" : undefined}>Staff</Link>
-          <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className={navLink}>Canvas</a>
-          <a href="https://edstem.org/us/courses/107539/discussion" target="_blank" rel="noreferrer" className={navLink}>Ed</a>
+          <a href="https://canvas.uw.edu/courses/1916846" target="_blank" rel="noreferrer" className={navLink}>Canvas<NewTab arrow={false} /></a>
+          <a href="https://edstem.org/us/courses/107539/discussion" target="_blank" rel="noreferrer" className={navLink}>Ed<NewTab arrow={false} /></a>
           <Link
             to="/projects"
             className="border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
@@ -54,13 +65,13 @@ export function CourseFooter() {
   const onHome = pathname === "/";
 
   return (
-    <footer id="team" className="border-t-2 border-ink bg-paper">
+    <footer className="border-t-2 border-ink bg-paper">
       {onHome && (
-        <div className="mx-auto max-w-6xl px-6 py-16">
+        <section id="team" aria-labelledby="team-heading" className="mx-auto max-w-6xl px-6 py-16">
           <p className="inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
             Staff
           </p>
-          <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
+          <h2 id="team-heading" className="mt-4 font-display text-3xl font-bold uppercase tracking-tighter sm:text-4xl">
             The team
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -72,6 +83,7 @@ export function CourseFooter() {
               className="font-semibold text-primary underline underline-offset-4 hover:no-underline"
             >
               Ed
+              <NewTab arrow={false} />
             </a>
             . To reach the whole staff at once, email the TA mailing list. Use the list below to
             contact the staff directly.
@@ -91,7 +103,8 @@ export function CourseFooter() {
                 rel="noreferrer"
                 className="mt-1 inline-block font-mono text-xs uppercase tracking-widest text-muted-foreground underline underline-offset-4 hover:no-underline"
               >
-                List info ↗
+                List info
+                <NewTab />
               </a>
             </div>
             <div className="border-b-2 border-ink px-5 py-3">
@@ -117,7 +130,7 @@ export function CourseFooter() {
               ))}
             </ul>
           </div>
-        </div>
+        </section>
       )}
       <div className="border-t-2 border-ink">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-6 py-4 font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
@@ -132,6 +145,12 @@ export function CourseFooter() {
 export function CourseLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-paper font-sans text-ink selection:bg-primary selection:text-primary-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm"
+      >
+        Skip to main content
+      </a>
       <CourseHeader />
       {children}
       <CourseFooter />
