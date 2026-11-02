@@ -41,8 +41,10 @@ export const Route = createFileRoute("/projects/$")({
     parseSplat(params._splat);
   },
   head: ({ params }) => {
-    const [id] = (params._splat ?? "").split("/");
-    return { meta: [{ title: `${id || "Project"} — Vibe Coding, CSE 490 A2` }] };
+    const [id, page] = (params._splat ?? "").split("/");
+    // each page of a project gets its own title: "P04 Setup", not just "P04"
+    const name = page && page in LABEL ? `${id} ${LABEL[page as ProjectPage]}` : id || "Project";
+    return { meta: [{ title: `${name} — Vibe Coding, CSE 490 A2` }] };
   },
   component: ProjectView,
 });
@@ -176,7 +178,8 @@ function ProjectView() {
             />
           )}
 
-          <article aria-busy={doc.isPending} className="mt-8">
+          {/* break long URLs, paths and commands so a phone never scrolls sideways */}
+          <article aria-busy={doc.isPending} className="mt-8 wrap-break-word">
             {doc.isPending && (
               <p role="status" className="font-mono text-sm text-muted-foreground">
                 Loading {LABEL[page].toLowerCase()}…
