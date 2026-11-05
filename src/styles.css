@@ -163,3 +163,11 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* a command is read character by character: no -< or -> ligatures in code */
+code,
+pre,
+kbd,
+.font-mono {
+  font-variant-ligatures: none;
+}

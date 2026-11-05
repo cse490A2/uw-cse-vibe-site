@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { Download } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { PageGuide } from "@/components/PageGuide";
-import { ProjectMarkdown } from "@/components/ProjectMarkdown";
+import { StepPager, StepSidebar } from "@/components/StepNav";
+import { plainTitle, splitSections } from "@/lib/sections";
+import { ProjectMarkdown, hasPlatformCommands } from "@/components/ProjectMarkdown";
 import {
+  PLATFORMS,
   detectPlatform,
   forPlatform,
   headings,
@@ -88,8 +91,12 @@ function ProjectView() {
   useEffect(() => {
     setChosen(loadPlatform() ?? detectPlatform());
   }, []);
+  // a document that labels commands by computer offers every computer, even
+  // when its per-computer blocks name fewer (the wizard download names two)
+  const labelled = useMemo(() => hasPlatformCommands(doc.data ?? ""), [doc.data]);
+  const offered: Platform[] = labelled ? PLATFORMS : split.platforms;
   const platform: Platform =
-    chosen && split.platforms.includes(chosen) ? chosen : (split.platforms[0] ?? chosen ?? "mac");
+    chosen && offered.includes(chosen) ? chosen : (offered[0] ?? chosen ?? "mac");
   const choosePlatform = (p: Platform) => {
     setChosen(p);
     savePlatform(p);
@@ -101,6 +108,42 @@ function ProjectView() {
   );
   const toc = useMemo(() => headings(shown), [shown]);
 
+  // One step at a time: the document cut at its step headings, a sidebar of
+  // them, and the step named in the URL's hash shown (the first when none).
+  const allSections = useMemo(() => splitSections(shown), [shown]);
+  // with a computer chosen, a step marked for other computers is not shown
+  // and a step's own "(Windows only)" mark is implied by the choice
+  const sections = useMemo(
+    () =>
+      labelled
+        ? allSections
+            .filter((s) => !s.only || s.only.includes(platform))
+            .map((s) => ({ ...s, title: plainTitle(s.title) }))
+        : allSections,
+    [allSections, labelled, platform],
+  );
+  const stepped = page === "setup" && sections.length > 1; // a handout stays one page
+  const [stepId, setStepId] = useState<string>("");
+  useEffect(() => {
+    const fromHash = () => setStepId(window.location.hash.replace(/^#/, ""));
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
+  }, []);
+  const stepIndex = Math.max(
+    0,
+    sections.findIndex((s) => s.id === stepId),
+  );
+  const articleRef = useRef<HTMLElement>(null);
+  const pickStep = (i: number) => {
+    const s = sections[i];
+    if (!s) return;
+    setStepId(s.id);
+    window.history.replaceState(null, "", `#${s.id}`);
+    articleRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    articleRef.current?.focus({ preventScroll: true });
+  };
+
   return (
     <CourseLayout>
       <main
@@ -108,7 +151,7 @@ function ProjectView() {
         tabIndex={-1}
         className="focus:outline-none min-h-screen bg-background text-foreground"
       >
-        <div className="mx-auto max-w-4xl px-6 py-16">
+        <div className={"mx-auto px-6 py-16 " + (stepped ? "max-w-6xl" : "max-w-4xl")}>
           <nav
             aria-label="Breadcrumb"
             className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary"
@@ -171,36 +214,65 @@ function ProjectView() {
 
           {doc.data && (
             <PageGuide
-              platforms={split.platforms}
+              platforms={offered}
               platform={platform}
               onPlatform={choosePlatform}
-              items={toc}
+              items={stepped ? [] : toc}
             />
           )}
 
-          {/* break long URLs, paths and commands so a phone never scrolls sideways */}
-          <article aria-busy={doc.isPending} className="mt-8 wrap-break-word">
-            {doc.isPending && (
-              <p role="status" className="font-mono text-sm text-muted-foreground">
-                Loading {LABEL[page].toLowerCase()}…
-              </p>
+          <div className={stepped ? "lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-10" : ""}>
+            {doc.data && stepped && (
+              <aside className="mt-8">
+                <StepSidebar sections={sections} index={stepIndex} onPick={pickStep} />
+              </aside>
             )}
-            {doc.isError && (
-              <div role="alert" className="border-2 border-ink bg-secondary p-4 shadow-hard-sm">
-                <p className="font-medium">
-                  This page did not load from the course repository.
-                  <span className="block text-sm text-muted-foreground">{String(doc.error)}</span>
+
+            {/* break long URLs, paths and commands so a phone never scrolls sideways */}
+            <article
+              ref={articleRef}
+              tabIndex={-1}
+              aria-busy={doc.isPending}
+              className="mt-8 scroll-mt-24 wrap-break-word focus:outline-none"
+            >
+              {doc.isPending && (
+                <p role="status" className="font-mono text-sm text-muted-foreground">
+                  Loading {LABEL[page].toLowerCase()}…
                 </p>
-                <button
-                  onClick={() => doc.refetch()}
-                  className="mt-3 inline-flex items-center border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm"
-                >
-                  Try again
-                </button>
-              </div>
-            )}
-            {doc.data && <ProjectMarkdown id={id} markdown={shown} />}
-          </article>
+              )}
+              {doc.isError && (
+                <div role="alert" className="border-2 border-ink bg-secondary p-4 shadow-hard-sm">
+                  <p className="font-medium">
+                    This page did not load from the course repository.
+                    <span className="block text-sm text-muted-foreground">{String(doc.error)}</span>
+                  </p>
+                  <button
+                    onClick={() => doc.refetch()}
+                    className="mt-3 inline-flex items-center border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm"
+                  >
+                    Try again
+                  </button>
+                </div>
+              )}
+              {doc.data && stepped && sections[stepIndex]?.group && (
+                <p className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                  {sections[stepIndex]?.group}
+                </p>
+              )}
+              {doc.data && (
+                <ProjectMarkdown
+                  id={id}
+                  platform={labelled ? platform : undefined}
+                  markdown={
+                    stepped ? (sections[stepIndex]?.body ?? "").replace(/^#{2,6}\s+/, "# ") : shown
+                  }
+                />
+              )}
+              {doc.data && stepped && (
+                <StepPager sections={sections} index={stepIndex} onPick={pickStep} />
+              )}
+            </article>
+          </div>
         </div>
       </main>
     </CourseLayout>
