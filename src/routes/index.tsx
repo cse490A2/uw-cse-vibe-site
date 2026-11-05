@@ -35,7 +35,7 @@ const SCHEDULE = [
   { week: "03", lecture: "The Agent Harness", project: "The Agent Harness" },
   { week: "04", lecture: "Agent Steering", project: "Driving a Coding Agent" },
   { week: "05", lecture: "MCP and Security", project: "Building an Animation with MCP" },
-  { week: "06", lecture: "Working in Code You Did Not Write", project: "Review a Stranger's Code" },
+  { week: "06", lecture: "Working in Code You Did Not Write", project: "Fixing Code You Did Not Write" },
   { week: "07", lecture: "Multi-Agent Orchestration", project: "Orchestrate Sub-Agents" },
   { week: "08", lecture: "Local Models", project: "Local-First Cascade" },
   { week: "09", lecture: "Evals", project: "Eval Suite (optional)" },
@@ -106,14 +106,14 @@ function Index() {
               </article>
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                  Project 05 · Due Tue 11:59 pm
+                  Project 06 · Due Tue 11:59 pm
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
-                  Building an Animation with MCP
+                  Fixing Code You Did Not Write
                 </h3>
                 <Link
                   to="/projects/$"
-                  params={{ _splat: "P05" }}
+                  params={{ _splat: "P06" }}
                   className="mt-4 inline-block border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
                 >
                   Handout
