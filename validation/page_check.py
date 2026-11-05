@@ -20,7 +20,7 @@ typing?" panel, measures the DOM and screenshots the page; then proves:
   R6  a panel's table is whole: three cells a row, a first cell with text,
       no clipped cell.
   R7  a Check box holds a command or a sentence; a Troubleshooting box holds
-      a list.
+      folded items, each closed with a problem on its row.
   R8  the sidebar lights the step shown (its text is the page title), and
       Previous / Next name the neighbours.
   R9  a numbered list that a command block interrupts resumes its count.
@@ -90,7 +90,8 @@ MEASURE = r"""
   }
   for (const box of art.querySelectorAll('div.border-l-primary, div.border-l-gold')) {
     const kind = box.className.includes('border-l-primary') ? 'check' : 'trouble';
-    out.boxes.push({kind, hasPre: !!box.querySelector('pre'), hasText: (box.textContent||'').trim().length > 20, hasList: !!box.querySelector('ul')});
+    const folds = [...box.querySelectorAll('details')].map(d => ({problem: ((d.querySelector('summary')||{}).textContent||'').trim().length, open: d.open}));
+    out.boxes.push({kind, hasPre: !!box.querySelector('pre'), hasText: (box.textContent||'').trim().length > 20, hasList: !!box.querySelector('ul'), folds});
   }
   const kids = [...art.querySelectorAll('ol, h1, h2, h3, h4')];
   out.ols = kids.map(el => el.tagName === 'OL' ? {start: parseInt(el.getAttribute('start')||'1'), n: el.children.length} : {heading: true});
@@ -128,7 +129,11 @@ def rules(m, width, pixels, phone=False):
                 if r["clipped"]: breaks.append("R6 clipped cell in row %r" % r["first"][:30])
     for b in m["boxes"]:
         if b["kind"] == "check" and not (b["hasPre"] or b["hasText"]): breaks.append("R7 empty Check box")
-        if b["kind"] == "trouble" and not b["hasList"]: breaks.append("R7 Troubleshooting box without a list")
+        if b["kind"] == "trouble":
+            folds = b.get("folds") or []
+            if not folds: breaks.append("R7 Troubleshooting box without folded items")
+            if any(f["problem"] < 4 for f in folds): breaks.append("R7 a fold with no problem on its row")
+            if any(f["open"] for f in folds): breaks.append("R7 a fold open before the reader opens it")
     sb = m["sidebar"]
     if sb:
         if sb["count"] != 1: breaks.append("R8 %d lit sidebar items" % sb["count"])

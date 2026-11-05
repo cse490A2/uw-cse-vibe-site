@@ -1,5 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { Children, isValidElement, useState, type ReactNode } from "react";
+import {
+  Children,
+  createContext,
+  isValidElement,
+  useContext,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -317,6 +325,32 @@ function TypingPanel({ children }: { children: ReactNode }) {
   );
 }
 
+/** True inside a Troubleshooting box: its list folds, item by item. */
+const TroubleCtx = createContext(false);
+
+/** One Troubleshooting item, folded: the problem (the item's italic lead) is
+ * the row a reader scans; the fix opens under it. An item with no italic
+ * lead stays a plain line. */
+function TroubleItem({ children }: { children: ReactNode }) {
+  const parts = Children.toArray(children);
+  const i = parts.findIndex((p) => isValidElement(p) && p.type === "em");
+  if (i < 0) return <div className="mt-2 leading-relaxed">{children}</div>;
+  const problem = parts[i] as ReactElement<{ children?: ReactNode }>;
+  const fix = parts.slice(i + 1);
+  return (
+    <details className="group border-t border-ink/20 first:border-t-0">
+      <summary className="flex cursor-pointer list-none items-start gap-2 py-1.5 leading-relaxed hover:bg-secondary/60 [&::-webkit-details-marker]:hidden">
+        <span aria-hidden="true" className="mt-px w-3 shrink-0 font-mono text-xs font-bold">
+          <span className="group-open:hidden">+</span>
+          <span className="hidden group-open:inline">{"\u2212"}</span>
+        </span>
+        <span className="italic">{problem.props.children}</span>
+      </summary>
+      <div className="pb-2 pl-5 leading-relaxed">{fix}</div>
+    </details>
+  );
+}
+
 export function ProjectMarkdown({
   id,
   markdown,
@@ -387,13 +421,23 @@ export function ProjectMarkdown({
       </h6>
     ),
     p: ({ children }) => <p className="mt-4 leading-relaxed">{children}</p>,
-    ul: ({ children }) => <ul className="mt-4 list-disc space-y-1.5 pl-6">{children}</ul>,
+    ul: ({ children }) =>
+      useContext(TroubleCtx) ? (
+        <div className="mt-2">{children}</div>
+      ) : (
+        <ul className="mt-4 list-disc space-y-1.5 pl-6">{children}</ul>
+      ),
     ol: ({ children, start }) => (
       <ol start={start} className="mt-4 list-decimal space-y-1.5 pl-6">
         {children}
       </ol>
     ),
-    li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+    li: ({ children }) =>
+      useContext(TroubleCtx) ? (
+        <TroubleItem>{children}</TroubleItem>
+      ) : (
+        <li className="leading-relaxed">{children}</li>
+      ),
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     a: ({ href, children }) => {
       const r = resolveLink(id, href ?? "");
@@ -451,10 +495,14 @@ export function ProjectMarkdown({
         );
       }
       if (label === "Troubleshooting") {
+        // each item folds: the problem (the italic lead) is the row, the fix
+        // opens under it; the list and its items read the context below
         return (
-          <div className="mt-4 border-2 border-ink border-l-8 border-l-gold bg-card p-3 pt-0 shadow-hard-sm [&>p]:mt-3 [&>ul]:mt-2">
-            {children}
-          </div>
+          <TroubleCtx.Provider value={true}>
+            <div className="mt-4 border-2 border-ink border-l-8 border-l-gold bg-card p-3 pt-0 shadow-hard-sm [&>p]:mt-3">
+              {children}
+            </div>
+          </TroubleCtx.Provider>
         );
       }
       return <div className="mt-1">{children}</div>;
