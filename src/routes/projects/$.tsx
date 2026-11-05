@@ -20,6 +20,7 @@ import {
 import {
   PAGE_FILE,
   PUBLISHED_RAW,
+  RUBRICS,
   fetchText,
   isProjectId,
   listProjects,
@@ -27,7 +28,7 @@ import {
   stripFrontMatter,
   type ProjectPage,
 } from "@/lib/published";
-import { CourseLayout } from "@/components/course-shell";
+import { CourseLayout, NewTab } from "@/components/course-shell";
 import { PROXY_PROJECTS, VpnNotice } from "@/components/vpn-notice";
 
 // /projects/P02, /projects/P02/setup, /projects/P02/submission
@@ -206,6 +207,17 @@ function ProjectView() {
                 className="inline-flex items-center gap-1.5 border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-gold-foreground shadow-hard-sm"
               >
                 <Download className="h-3.5 w-3.5" /> Starter files
+              </a>
+            )}
+            {RUBRICS[id] && (
+              <a
+                href={RUBRICS[id]}
+                target="_blank"
+                rel="noreferrer"
+                className="border-2 border-ink bg-card px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm hover:bg-secondary"
+              >
+                Rubric
+                <NewTab />
               </a>
             )}
           </nav>

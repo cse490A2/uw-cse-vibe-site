@@ -34,6 +34,12 @@ export interface PublishedProject {
 // their pages show as not found. Remove an id here to release it.
 export const HIDDEN_PROJECTS = new Set<string>();
 
+// Rubrics are not in the published export; each one links straight to its
+// doc on the course drive. Add an id here to show a Rubric link on that project.
+export const RUBRICS: Record<string, string> = {
+  P06: "https://docs.google.com/document/d/1jRZCLaAx5NPmMFLovHtzYFjH_vp9KcIG-kSvHdlhyAQ/edit?tab=t.0",
+};
+
 export function isProjectId(s: string | undefined): s is string {
   return !!s && /^P\d{2}$/.test(s) && !HIDDEN_PROJECTS.has(s);
 }
