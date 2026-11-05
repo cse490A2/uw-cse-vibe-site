@@ -49,6 +49,14 @@ export const LECTURES: Lecture[] = [
     slides:
       "https://docs.google.com/presentation/d/1reJnpabQDyxkcu91-zWb1pDlSFMQ5shTBj_5BiKy2F0/edit?slide=id.F07s01#slide=id.F07s01",
   },
+  {
+    id: "L06",
+    title: "Fixing Code You Did Not Write",
+    summary:
+      "Fixing a real bug in a large open-source codebase you have never read: trace it with git history, write a failing test first, get a second opinion, search for the same bug elsewhere, and ship it as a pull request.",
+    slides:
+      "https://docs.google.com/presentation/d/1BsiSUmECVIklUwcklWO-0Ly0o488_SlU7fX6vStuPLo/edit?slide=id.F05s01#slide=id.F05s01",
+  },
 ];
 
 export function lecture(id: string): Lecture | undefined {
