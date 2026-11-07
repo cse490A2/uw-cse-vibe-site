@@ -38,7 +38,7 @@ const SCHEDULE = [
   { week: "06", lecture: "Fixing Code You Did Not Write", project: "Fixing Code You Did Not Write" },
   { week: "07", lecture: "Multi-Agent Orchestration", project: "Orchestrate Sub-Agents" },
   { week: "08", lecture: "Local Models", project: "Local-First Cascade" },
-  { week: "09", lecture: "Evals", project: "Eval Suite (optional)" },
+  { week: "09", lecture: "Evals", project: "None" },
   { week: "10", lecture: "Deploy Behind CI", project: "Ship a Project" },
 ];
 
