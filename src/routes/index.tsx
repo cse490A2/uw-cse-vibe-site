@@ -27,19 +27,19 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Titles match the slides and handouts once they are posted; later weeks
-// are the planned topics.
+// Lecture titles match the slides once they are posted; later weeks are the
+// planned topics. Each project is a one-line pitch, not its handout title.
 const SCHEDULE = [
-  { week: "01", lecture: "Intro + Prompt to App", project: "Prompt to Web App" },
-  { week: "02", lecture: "Coding on a Budget", project: "Insert Prompt to Play" },
-  { week: "03", lecture: "The Agent Harness", project: "The Agent Harness" },
-  { week: "04", lecture: "Agent Steering", project: "Driving a Coding Agent" },
-  { week: "05", lecture: "MCP and Security", project: "Building an Animation with MCP" },
-  { week: "06", lecture: "Fixing Code You Did Not Write", project: "Fixing Code You Did Not Write" },
-  { week: "07", lecture: "Multi-Agent Orchestration", project: "Orchestrate Sub-Agents" },
-  { week: "08", lecture: "Local Models", project: "Local-First Cascade" },
+  { week: "01", lecture: "Intro + Prompt to App", project: "Build your own app using Lovable" },
+  { week: "02", lecture: "Coding on a Budget", project: "Test different models' ability to build and mash-up games" },
+  { week: "03", lecture: "The Agent Harness", project: "Build your own coding harness" },
+  { week: "04", lecture: "Agent Steering", project: "Skills and plan mode" },
+  { week: "05", lecture: "MCP and Security", project: "Create your own 3D Blender animation" },
+  { week: "06", lecture: "Fixing Code You Did Not Write", project: "Fix a real open-source codebase" },
+  { week: "07", lecture: "Multi-Agent Orchestration", project: "Cast an agent crew" },
+  { week: "08", lecture: "Local Models", project: "Local models running on your laptop" },
   { week: "09", lecture: "Evals", project: "None" },
-  { week: "10", lecture: "Deploy Behind CI", project: "Ship a Project" },
+  { week: "10", lecture: "Deploy Behind CI", project: "Build your own custom agent" },
 ];
 
 function Index() {
