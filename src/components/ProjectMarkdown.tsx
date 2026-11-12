@@ -40,7 +40,7 @@ function labelPlatforms(label: string): Platform[] {
 const CMD_LINE = /^((?:\s*>)*\s*(?:(?:\d+\.|[-*])\s+)?)`([^`]+)`\s*$/;
 const BLOCK_LINE = /^((?:\s*>)*\s*)`([^`]+)`\s*$/; // a command line with no list marker
 const TROUBLE = /^\*\*(?:If not\.|Troubleshooting\.?)\*\*\s*$/;
-const CHECK = /^\*\*Check\.\*\*/;
+const CHECK = /^\*\*Check[.:]\*\*/;
 
 /** True when the document labels any command by computer. */
 export function hasPlatformCommands(md: string): boolean {
@@ -74,6 +74,13 @@ function indentJson(run: string[]): string[] {
  * the "Troubleshooting" list each as one quoted block, rendered as a box.
  */
 function markCommands(md: string, platform?: Platform): string {
+  // a GitHub note, "> [!NOTE]" then its text, becomes a quote that opens with an
+  // unseen mark (U+2063); the quote is then drawn as a box, with no label added
+  // (a Google Doc exports the mark escaped and on the note's own line)
+  md = md.replace(
+    /^((?:[ \t]*>)+)[ \t]*\\?\[\\?!NOTE\\?\][ \t]*(?:\n(?:[ \t]*>)+[ \t]*)?/gm,
+    "$1 \u2063",
+  );
   const src = md.replace(/`[ \u00a0]([,.;:)])/g, "`$1").split("\n");
 
   // pass 1: labelled command lines, kept or dropped by computer
@@ -170,7 +177,14 @@ function markCommands(md: string, platform?: Platform): string {
     for (; j < kept.length; j++) {
       const mm = BLOCK_LINE.exec(kept[j] ?? "");
       if (!mm) break;
-      run.push(mm[2] ?? "");
+      // a line indented further than the run's first line keeps that indent:
+      // a Google Doc exports the leading spaces of a code line outside it
+      const lead = mm[1] ?? "";
+      const extra =
+        lead.startsWith(prefix) && /^\s*$/.test(lead.slice(prefix.length))
+          ? lead.slice(prefix.length)
+          : "";
+      run.push(extra + (mm[2] ?? ""));
     }
     const body = /^[{[]/.test(run[0] ?? "") ? indentJson(run) : run;
     blocks.push(prefix + "```text", ...body.map((b) => prefix + b), prefix + "```");
@@ -487,9 +501,16 @@ export function ProjectMarkdown({
       const label = textOf(first).trim().split(/\s/)[0] ?? "";
       if (textOf(first).trim() === "What am I typing?")
         return <TypingPanel>{children}</TypingPanel>;
-      if (label === "Check.") {
+      if (label === "Check." || label === "Check:") {
         return (
           <div className="mt-5 border-2 border-ink border-l-8 border-l-primary bg-card p-3 pt-0 shadow-hard-sm [&>*:not([data-panel])]:mt-3">
+            {children}
+          </div>
+        );
+      }
+      if (textOf(first).trimStart().startsWith("\u2063")) {
+        return (
+          <div className="mt-4 border-2 border-ink border-l-8 border-l-ink bg-secondary p-3 pt-0 shadow-hard-sm [&>p]:mt-3 [&_code]:bg-card">
             {children}
           </div>
         );

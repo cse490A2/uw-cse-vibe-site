@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import type { Section } from "@/lib/sections";
@@ -60,17 +61,20 @@ export function StepSidebar({
   );
 }
 
-const pager =
+export const pager =
   "inline-flex max-w-[48%] items-center gap-2 border-2 border-ink bg-card px-3 py-2 text-left text-sm font-bold shadow-hard-sm transition-transform hover:-translate-y-0.5 hover:bg-secondary";
 
 export function StepPager({
   sections,
   index,
   onPick,
+  after,
 }: {
   sections: Section[];
   index: number;
   onPick: (i: number) => void;
+  /** Shown in place of Next on the last step: where the reader goes from here. */
+  after?: ReactNode;
 }) {
   const prev = index > 0 ? sections[index - 1] : undefined;
   const next = index < sections.length - 1 ? sections[index + 1] : undefined;
@@ -117,7 +121,7 @@ export function StepPager({
           <ArrowRight className="h-4 w-4 shrink-0" />
         </a>
       ) : (
-        <span />
+        (after ?? <span />)
       )}
     </nav>
   );

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { PageGuide } from "@/components/PageGuide";
-import { StepPager, StepSidebar } from "@/components/StepNav";
+import { StepPager, StepSidebar, pager } from "@/components/StepNav";
 import { plainTitle, splitSections } from "@/lib/sections";
 import { ProjectMarkdown, hasPlatformCommands } from "@/components/ProjectMarkdown";
 import {
@@ -281,7 +281,26 @@ function ProjectView() {
                 />
               )}
               {doc.data && stepped && (
-                <StepPager sections={sections} index={stepIndex} onPick={pickStep} />
+                <StepPager
+                  sections={sections}
+                  index={stepIndex}
+                  onPick={pickStep}
+                  after={
+                    <Link
+                      to="/projects/$"
+                      params={{ _splat: id }}
+                      className={pager + " ml-auto text-right"}
+                    >
+                      <span>
+                        <span className="block font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+                          Next
+                        </span>
+                        Handout
+                      </span>
+                      <ArrowRight className="h-4 w-4 shrink-0" />
+                    </Link>
+                  }
+                />
               )}
             </article>
           </div>
