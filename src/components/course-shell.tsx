@@ -44,7 +44,7 @@ export function CourseHeader() {
             to="/projects"
             className="border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
           >
-            Project 6 is live
+            Project 7 is live
           </Link>
         </nav>
       </div>

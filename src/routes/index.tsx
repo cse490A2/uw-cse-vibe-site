@@ -106,14 +106,14 @@ function Index() {
               </article>
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                  Project 06 · Due Tue 11:59 pm
+                  Project 07 · Due Tue 11:59 pm
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
-                  Fixing Code You Did Not Write
+                  A Team Upgrades Your Agent
                 </h3>
                 <Link
                   to="/projects/$"
-                  params={{ _splat: "P06" }}
+                  params={{ _splat: "P07" }}
                   className="mt-4 inline-block border-2 border-ink bg-gold px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm transition-transform hover:-translate-y-0.5"
                 >
                   Handout
