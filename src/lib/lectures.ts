@@ -57,6 +57,14 @@ export const LECTURES: Lecture[] = [
     slides:
       "https://docs.google.com/presentation/d/1BsiSUmECVIklUwcklWO-0Ly0o488_SlU7fX6vStuPLo/edit?slide=id.F05s01#slide=id.F05s01",
   },
+  {
+    id: "L07",
+    title: "Multi-Agent Orchestration",
+    summary:
+      "When a team of agents beats one: spawning for speed, cost, reliability, focus, and security; supervisor, fan-out, and swarm patterns; and when the extra coordination is not worth it.",
+    slides:
+      "https://docs.google.com/presentation/d/1479Nxjzq84u_sWKx-Ip_NR3kgnYAHseNRgEw7YeGS5o/edit?slide=id.F06s01#slide=id.F06s01",
+  },
 ];
 
 export function lecture(id: string): Lecture | undefined {
