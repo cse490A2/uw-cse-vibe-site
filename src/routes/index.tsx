@@ -37,7 +37,7 @@ const SCHEDULE = [
   { week: "05", lecture: "MCP and Security", project: "Create your own 3D Blender animation" },
   { week: "06", lecture: "Fixing Code You Did Not Write", project: "Fix a real open-source codebase" },
   { week: "07", lecture: "Multi-Agent Orchestration", project: "Cast an agent crew" },
-  { week: "08", lecture: "Local Models", project: "Local models running on your laptop" },
+  { week: "08", lecture: "Decision Models and Routing", project: "Local models running on your laptop" },
   { week: "09", lecture: "Evals", project: "None" },
   { week: "10", lecture: "Deploy Behind CI", project: "Build your own custom agent" },
 ];
@@ -89,13 +89,13 @@ function Index() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="border-2 border-ink bg-card p-6 shadow-hard">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
-                  Lecture 07 · Thu 10:00
+                  Lecture 08 · Thu 10:00
                 </p>
                 <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">
-                  Multi-Agent Orchestration
+                  Decision Models and Routing
                 </h3>
                 <a
-                  href={lecture("L07")?.slides}
+                  href={lecture("L08")?.slides}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-4 inline-block border-2 border-ink bg-primary px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-hard-sm transition-transform hover:-translate-y-0.5"

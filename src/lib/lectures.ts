@@ -65,6 +65,14 @@ export const LECTURES: Lecture[] = [
     slides:
       "https://docs.google.com/presentation/d/1479Nxjzq84u_sWKx-Ip_NR3kgnYAHseNRgEw7YeGS5o/edit?slide=id.F06s01#slide=id.F06s01",
   },
+  {
+    id: "L08",
+    title: "Decision Models and Routing",
+    summary:
+      "Decision models that score a fixed set of options instead of writing text, and how to use one to route: let a cheap model answer first, check its reply, and escalate to a stronger model only when the check fails.",
+    slides:
+      "https://docs.google.com/presentation/d/1m1NY0CURKyNlRfePIflkeXrpmjXu0Q3UOooiV0kP1Xg/edit?slide=id.F08s01#slide=id.F08s01",
+  },
 ];
 
 export function lecture(id: string): Lecture | undefined {
