@@ -4,14 +4,15 @@
 // and lists the headings that remain, so a reader jumps to a step instead of
 // scrolling past two other computers' copies of it.
 
-export type Platform = "mac" | "windows" | "linux";
+export type Platform = "mac" | "windows" | "linux" | "lab";
 
-export const PLATFORMS: Platform[] = ["mac", "windows", "linux"];
+export const PLATFORMS: Platform[] = ["mac", "windows", "linux", "lab"];
 
 export const PLATFORM_LABEL: Record<Platform, string> = {
   mac: "Mac",
   windows: "Windows",
   linux: "Linux",
+  lab: "Lab computer",
 };
 
 const PLATFORM_NAMES: Record<string, Platform> = {
@@ -20,6 +21,8 @@ const PLATFORM_NAMES: Record<string, Platform> = {
   "mac os": "mac",
   windows: "windows",
   linux: "linux",
+  "lab computer": "lab",
+  lab: "lab",
 };
 
 const STORAGE_KEY = "cse490.platform";
