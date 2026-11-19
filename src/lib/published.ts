@@ -35,10 +35,10 @@ export interface PublishedProject {
 export const HIDDEN_PROJECTS = new Set<string>();
 
 // Rubrics are not in the published export; each one links straight to its
-// doc on the course drive. Add an id here to show a Rubric link on that project.
+// doc on the course drive or its Canvas assignment. Add an id here to show a Rubric link on that project.
 export const RUBRICS: Record<string, string> = {
   P06: "https://docs.google.com/document/d/1jRZCLaAx5NPmMFLovHtzYFjH_vp9KcIG-kSvHdlhyAQ/edit?tab=t.0",
-  P07: "https://docs.google.com/document/d/1VSW2wCQn08NiiryOc2fxyukPl3h8xTB5_pyvPGOWUqw/edit?tab=t.0",
+  P07: "https://canvas.uw.edu/courses/1916846/assignments/11896582",
   P08: "https://canvas.uw.edu/courses/1916846/assignments/11908441",
 };
 
