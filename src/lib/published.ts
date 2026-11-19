@@ -39,6 +39,7 @@ export const HIDDEN_PROJECTS = new Set<string>();
 export const RUBRICS: Record<string, string> = {
   P06: "https://docs.google.com/document/d/1jRZCLaAx5NPmMFLovHtzYFjH_vp9KcIG-kSvHdlhyAQ/edit?tab=t.0",
   P07: "https://docs.google.com/document/d/1VSW2wCQn08NiiryOc2fxyukPl3h8xTB5_pyvPGOWUqw/edit?tab=t.0",
+  P08: "https://canvas.uw.edu/courses/1916846/assignments/11908441",
 };
 
 export function isProjectId(s: string | undefined): s is string {
