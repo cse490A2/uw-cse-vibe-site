@@ -66,10 +66,12 @@ function Index() {
               AI-Assisted <span className="text-primary">Software Development</span>
             </h1>
             <p className="mt-6 text-lg font-medium leading-relaxed">
-              Learn the latest AI-based tools for software development — by
-              building. Ten Thursdays, ten builds: from a single prompt to a
-              shipped app. The goal: build your own Claude Code — a coding
-              agent with a harness, tools, and guardrails you understand.
+              This course introduces students to AI-powered software
+              development through 10 hands-on sessions. Students will learn how
+              to develop applications using natural language prompts and how AI
+              coding agents work under the hood. By the end of the course,
+              students will have built their own coding agent, including its
+              harness, tools, and safety mechanisms.
             </p>
             <p className="mt-4 font-mono text-sm text-muted-foreground">
               Thursdays 10:00–11:20 · Savery 260 · Steve Seitz
@@ -133,10 +135,11 @@ function Index() {
               Ten Thursdays, ten builds
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-              The sequence starts with the fastest possible win — a prompt
-              becomes a working app in session one — then climbs through
-              prompting method, the agentic loop, agents, and closes on evals
-              and shipping.
+              Each session centers on a practical build. Students develop a
+              working application in the first session before moving into
+              prompting techniques, agentic loops, and coding agent
+              architecture. The final sessions cover how to evaluate AI-powered
+              systems, improve their reliability, and deploy applications.
             </p>
             <div className="mt-8 border-2 border-ink bg-card shadow-hard-lg">
               {/* column labels for the eye; each row names its own parts for screen readers */}
