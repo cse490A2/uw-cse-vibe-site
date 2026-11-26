@@ -4,10 +4,10 @@ import { LECTURES } from "@/lib/lectures";
 
 export const Route = createFileRoute("/lectures")({
   head: () => ({ meta: [
-    { title: "Lectures | UW CSE 490 A2 Vibe Coding" },
-    { name: "description", content: "Lecture materials for UW CSE 490 A2 Vibe Coding, beginning with L01: Intro + Prompt to App." },
-    { property: "og:title", content: "Lectures | UW CSE 490 A2 Vibe Coding" },
-    { property: "og:description", content: "Browse Vibe Coding lectures and materials, beginning with L01: Intro + Prompt to App." },
+    { title: "Lectures | UW CSE 490 A2 AI-Assisted Software Development" },
+    { name: "description", content: "Lecture materials for UW CSE 490 A2 AI-Assisted Software Development, beginning with L01: Intro + Prompt to App." },
+    { property: "og:title", content: "Lectures | UW CSE 490 A2 AI-Assisted Software Development" },
+    { property: "og:description", content: "Browse AI-Assisted Software Development lectures and materials, beginning with L01: Intro + Prompt to App." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -20,7 +20,7 @@ function Lectures() {
       <main id="main" tabIndex={-1} className="focus:outline-none min-h-[55vh]">
         <div className="mx-auto max-w-4xl px-6 py-16">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary">
-            <Link to="/" className="hover:underline">Vibe Coding</Link>
+            <Link to="/" className="hover:underline">AI-Assisted Software Development</Link>
             <span aria-hidden="true" className="text-muted-foreground">/</span>
             <span aria-current="page" className="text-foreground">Lectures</span>
           </nav>

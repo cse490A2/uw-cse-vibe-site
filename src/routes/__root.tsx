@@ -78,8 +78,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "UW CSE Vibe Coding" },
-      { name: "description", content: "University of Washington CSE Vibe Coding course." },
+      { title: "UW CSE AI-Assisted Software Development" },
+      { name: "description", content: "University of Washington CSE AI-Assisted Software Development course." },
       { name: "author", content: "UW CSE" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

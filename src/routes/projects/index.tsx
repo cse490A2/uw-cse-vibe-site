@@ -9,7 +9,7 @@ import { LatePolicy } from "@/components/late-policy";
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Projects — Vibe Coding, CSE 490 A2" },
+      { title: "Projects — AI-Assisted Software Development, CSE 490 A2" },
       {
         name: "description",
         content: "Every weekly project: the handout, setup, and what to turn in.",
@@ -39,7 +39,7 @@ function ProjectsIndex() {
             to="/"
             className="font-mono text-xs font-bold uppercase tracking-widest text-primary hover:underline"
           >
-            <span aria-hidden="true">← </span>Vibe Coding
+            <span aria-hidden="true">← </span>AI-Assisted Software Development
           </Link>
           <p className="mt-6 inline-block border-2 border-ink bg-card px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest shadow-hard-sm">
             projects

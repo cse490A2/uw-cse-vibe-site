@@ -48,7 +48,7 @@ export const Route = createFileRoute("/projects/$")({
     const [id, page] = (params._splat ?? "").split("/");
     // each page of a project gets its own title: "P04 Setup", not just "P04"
     const name = page && page in LABEL ? `${id} ${LABEL[page as ProjectPage]}` : id || "Project";
-    return { meta: [{ title: `${name} — Vibe Coding, CSE 490 A2` }] };
+    return { meta: [{ title: `${name} — AI-Assisted Software Development, CSE 490 A2` }] };
   },
   component: ProjectView,
 });
@@ -158,7 +158,7 @@ function ProjectView() {
             className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs font-bold uppercase tracking-widest text-primary"
           >
             <Link to="/" className="hover:underline">
-              Vibe Coding
+              AI-Assisted Software Development
             </Link>
             <span aria-hidden="true" className="text-muted-foreground">
               /

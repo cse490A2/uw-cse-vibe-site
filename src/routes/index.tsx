@@ -8,13 +8,13 @@ import { listProjects } from "@/lib/published";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vibe Coding | UW CSE 490 A2" },
+      { title: "AI-Assisted Software Development | UW CSE 490 A2" },
       {
         name: "description",
         content:
           "UW CSE 490 A2: hands-on AI-assisted software development with Steve Seitz and the UW CSE instructional team.",
       },
-      { property: "og:title", content: "Vibe Coding | UW CSE 490 A2" },
+      { property: "og:title", content: "AI-Assisted Software Development | UW CSE 490 A2" },
       {
         property: "og:description",
         content:
@@ -60,10 +60,10 @@ function Index() {
         <section id="overview" aria-labelledby="overview-heading" className="border-b-2 border-ink">
           <div className="mx-auto max-w-6xl px-6 py-8">
             <p className="inline-block border-2 border-ink bg-gold px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-widest text-ink shadow-hard-sm">
-              Autumn 2026 · UW CSE 490 A2 · 2 credits
+              Autumn 2026 · UW CSE 490 A2
             </p>
             <h1 id="overview-heading" className="mt-6 font-display text-5xl font-bold uppercase tracking-tighter sm:text-7xl">
-              Vibe <span className="text-primary">Coding</span>
+              AI-Assisted <span className="text-primary">Software Development</span>
             </h1>
             <p className="mt-6 text-lg font-medium leading-relaxed">
               Learn the latest AI-based tools for software development — by
